@@ -3,4 +3,12 @@
     font-size: 18px;
     line-height: 22px;
     margin-top: 34px;
+    margin-bottom: 54px;
+}
+
+@media screen and (max-width: 568px) {
+    .form__title {
+        margin-top: 25px;
+        margin-bottom: 45px;
+    }
 }

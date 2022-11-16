@@ -1,0 +1,23 @@
+.form__save {
+background: url(../../../images/Add-Button.png);
+background-position: center;
+background-repeat: no-repeat;
+object-fit: contain;
+cursor: pointer;
+width: 358px;
+height: 50px;
+margin: 48px auto 37px;
+}
+
+.form__save:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 568px) {
+    .form__save {
+        width: 238px;
+        height: 46px;
+        border-radius: 2px;
+        margin: 45px auto 25px;
+    }
+}
