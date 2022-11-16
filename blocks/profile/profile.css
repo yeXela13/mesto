@@ -1,0 +1,15 @@
+.profile {
+    font-family: 'Inter', Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 880px;
+    margin: 0 auto 51px;
+}
+
+@media screen and (max-width: 568px) {
+    .profile {
+        margin-bottom: 48px;
+        flex-direction: column;
+    }
+}
