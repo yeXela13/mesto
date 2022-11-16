@@ -25,4 +25,10 @@
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/footer__info/footer__info.css);
-
+/*popap*/
+@import url(../blocks/popap/popap.css);
+@import url(../blocks/popap/__close/popap__close.css);
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__textarea/form__textarea.css);
+@import url(../blocks/form/__save/form__save);
