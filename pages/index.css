@@ -27,8 +27,10 @@
 @import url(../blocks/footer/footer__info/footer__info.css);
 /*popap*/
 @import url(../blocks/popap/popap.css);
+@import url(../blocks/popap/__container/popap__container.css);
 @import url(../blocks/popap/__close/popap__close.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__fieldset/form__fieldset.css);
 @import url(../blocks/form/__textarea/form__textarea.css);
-@import url(../blocks/form/__save/form__save);
+@import url(../blocks/form/__save/form__save.css);

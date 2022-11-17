@@ -1,17 +1,15 @@
 .form__textarea {
-    width: 358px;
-    height: 27px;
-    border-bottom: 1px solid rgba(00, 00, 00, 0.2);
+    max-width: 358px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     margin-top: 30px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
+    margin-left: 36px;
+    padding-bottom: 13px;
 }
 
 @media screen and (max-width: 568px) {
     .form__textarea {
         width: 238px;
-        height: 27px;
+        margin-left: 22px;
     }
 }

@@ -2,13 +2,11 @@
     font-weight: 900;
     font-size: 18px;
     line-height: 22px;
-    margin-top: 34px;
-    margin-bottom: 54px;
+    margin: 34px auto 24px 36px;
 }
 
 @media screen and (max-width: 568px) {
     .form__title {
-        margin-top: 25px;
-        margin-bottom: 45px;
+        margin: 25px auto 45px;
     }
 }
