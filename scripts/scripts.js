@@ -5,6 +5,8 @@ const popapSaveButton = popapElement.querySelector('.form__save');
 
 const togglePopapVisibility = function (event) {
     popapElement.classList.toggle('popap__opened');
+    nameInput.value = profileName.textContent;
+    postInput.value = profilePost.textContent;
 };
 popapOpenElement.addEventListener('click', togglePopapVisibility);
 popapCloseElement.addEventListener('click', togglePopapVisibility);
