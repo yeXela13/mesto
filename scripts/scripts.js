@@ -9,7 +9,6 @@ const togglePopapVisibility = function (event) {
 popapOpenElement.addEventListener('click', togglePopapVisibility);
 popapCloseElement.addEventListener('click', togglePopapVisibility);
 
-
 const formElement = popapElement.querySelector('.form');
 const nameInput = formElement.querySelector('.form__textarea_profile_name');
 const postInput = formElement.querySelector('.form__textarea_profile_post');
@@ -18,11 +17,8 @@ const profilePost = document.querySelector('.profile__post');
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
-
     profileName.textContent = nameInput.value;
     profilePost.textContent = postInput.value;
-
     togglePopapVisibility();
 }
-
 formElement.addEventListener('submit', formSubmitHandler); 
