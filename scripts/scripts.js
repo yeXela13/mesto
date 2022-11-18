@@ -1,33 +1,27 @@
 const popapElement = document.querySelector('.popap');
 const popapCloseElement = popapElement.querySelector('.popap__close');
 const popapOpenElement = document.querySelector('.profile__edit-button');
+const popapSaveButton = popapElement.querySelector('.form__save');
 
 const togglePopapVisibility = function (event) {
     popapElement.classList.toggle('popap__opened');
 };
-
 popapOpenElement.addEventListener('click', togglePopapVisibility);
 popapCloseElement.addEventListener('click', togglePopapVisibility);
 
-// Находим форму в DOM
-const formElement = popapElement.querySelector('.form'); // Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-const nameInput = formElement.querySelector('.profile__name');// Воспользуйтесь инструментом .querySelector()
-const jobInput = formElement.querySelector('.profile__post');// Воспользуйтесь инструментом .querySelector()
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+const formElement = popapElement.querySelector('.form');
+const nameInput = formElement.querySelector('.');
+const postInput = formElement.querySelector('.');
+
+
 function formSubmitHandler(evt) {
     evt.preventDefault();
 
-    // Получите значение полей jobInput и nameInput из свойства value
-    nameInput
-    jobInput
-    // Выберите элементы, куда должны быть вставлены значения полей
+    nameInput.textContent = nameInput.value;
+    postInput.textContent = jobInput.value;
 
-    // Вставьте новые значения с помощью textContent
+    togglePopapVisibility();
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler); 
