@@ -5,23 +5,22 @@ const popapSaveButton = popapElement.querySelector('.form__save');
 
 const togglePopapVisibility = function (event) {
     popapElement.classList.toggle('popap__opened');
+    nameInput.value = profileName.textContent;
+    postInput.value = profilePost.textContent;
 };
 popapOpenElement.addEventListener('click', togglePopapVisibility);
 popapCloseElement.addEventListener('click', togglePopapVisibility);
 
-
 const formElement = popapElement.querySelector('.form');
-const nameInput = formElement.querySelector('.');
-const postInput = formElement.querySelector('.');
-
+const nameInput = formElement.querySelector('.form__textarea_profile_name');
+const postInput = formElement.querySelector('.form__textarea_profile_post');
+const profileName = document.querySelector('.profile__name');
+const profilePost = document.querySelector('.profile__post');
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
-
-    nameInput.textContent = nameInput.value;
-    postInput.textContent = jobInput.value;
-
+    profileName.textContent = nameInput.value;
+    profilePost.textContent = postInput.value;
     togglePopapVisibility();
 }
-
 formElement.addEventListener('submit', formSubmitHandler); 
