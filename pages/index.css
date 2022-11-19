@@ -6,13 +6,13 @@
 @import url(../blocks/header/__logo/header__logo.css);
 /*profile*/
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/profile__avatar/profile__avatar.css);
-@import url(../blocks/profile/profile__info/profile__info.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__container/profile__container.css);
-@import url(../blocks/profile/profile__name/profile__name.css);
-@import url(../blocks/profile/profile__post/profile__post.css);
-@import url(../blocks/profile/profile__edit-button/profile__edit-button.css);
-@import url(../blocks/profile/profile__add-button/profile__add-button.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__post/profile__post.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
 /*main*/
 @import url(../blocks/main/main.css);
 /*element*/
@@ -25,10 +25,10 @@
 @import url(../blocks/element/__like/element__like.css);
 /*footer*/
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/footer__info/footer__info.css);
+@import url(../blocks/footer/__info/footer__info.css);
 /*popap*/
 @import url(../blocks/popap/popap.css);
-@import url(../blocks/popap/__opened/popap__opened.css);
+@import url(../blocks/popap/_opened/popap_opened.css);
 @import url(../blocks/popap/__container/popap__container.css);
 @import url(../blocks/popap/__close/popap__close.css);
 @import url(../blocks/form/form.css);
