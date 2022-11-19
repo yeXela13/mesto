@@ -1,6 +1,4 @@
 .profile__info {
-    list-style-type: none;
-    padding-left: 0;
     margin-left: 30px;
     display: flex;
     flex-direction: row;
