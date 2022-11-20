@@ -22,6 +22,8 @@
     .form__save {
         width: 238px;
         height: 46px;
+        font-size: 14px;
+        line-height: 16.94px;
         margin: 45px auto 25px;
     }
 }
