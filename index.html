@@ -25,8 +25,12 @@
             <button class="profile__add-button" type="button"></button>
         </section>
         <section class="elements">
-            <div class="element">
+            <ul class="element">
+            </ul>
+            <!--
+           <div class="element">
                 <div class="element__item">
+                    <button class="element__delete-button" type="button"></button>
                     <img class="element__image" src="./images/Франция.jpg" alt="Франция">
                     <div class="element__caption">
                         <h2 class="element__text">Франция</h2>
@@ -36,6 +40,7 @@
             </div>
             <div class="element">
                 <div class="element__item">
+                    <button class="element__delete-button" type="button"></button>
                     <img class="element__image" src="./images/Фиджи.jpg" alt="Фиджи">
                     <div class="element__caption">
                         <h2 class="element__text">Фиджи</h2>
@@ -45,6 +50,7 @@
             </div>
             <div class="element">
                 <div class="element__item">
+                    <button class="element__delete-button" type="button"></button>
                     <img class="element__image" src="./images/Турция.jpg" alt="Турция">
                     <div class="element__caption">
                         <h2 class="element__text">Турция</h2>
@@ -54,6 +60,7 @@
             </div>
             <div class="element">
                 <div class="element__item">
+                    <button class="element__delete-button" type="button"></button>
                     <img class="element__image" src="./images/Мехико.jpg" alt="Мехико">
                     <div class="element__caption">
                         <h2 class="element__text">Мехико</h2>
@@ -63,6 +70,7 @@
             </div>
             <div class="element">
                 <div class="element__item">
+                    <button class="element__delete-button" type="button"></button>
                     <img class="element__image" src="./images/Исландия.jpg" alt="Исландия">
                     <div class="element__caption">
                         <h2 class="element__text">Исландия</h2>
@@ -72,6 +80,7 @@
             </div>
             <div class="element">
                 <div class="element__item">
+                    <button class="element__delete-button" type="button"></button>
                     <img class="element__image" src="./images/Германия.jpg" alt="Германия">
                     <div class="element__caption">
                         <h2 class="element__text">Германия</h2>
@@ -79,6 +88,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </section>
     </main>
     <footer class="footer">
@@ -91,14 +101,45 @@
             <form class="form" name="popat-form">
                 <h2 class="form__title">Редкатировать профиль</h2>
                 <fieldset class="form__fieldset">
-                    <input name="input-name" class="form__textarea form__textarea_profile_name" type="text" required placeholder="Имя">
-                    <input name="input-post" class="form__textarea form__textarea_profile_post" type="text" required placeholder="О себе">
+                    <input name="input-name" class="form__textarea form__textarea_profile_name" type="text" required
+                        placeholder="Имя">
+                    <input name="input-post" class="form__textarea form__textarea_profile_post" type="text" required
+                        placeholder="О себе">
                 </fieldset>
                 <button class="form__save" type="submit">Сохранить</button>
             </form>
         </div>
     </section>
+
+    <section class="popap-item">
+        <div class="popap-item__container">
+            <button class="popap-item__close" type="button"></button>
+            <form class="form-item" name="popat-item-form">
+                <h2 class="form-item__title">Новое место</h2>
+                <fieldset class="form-item__fieldset">
+                    <input name="input-place" class="form-item__textarea form-item__textarea_element_name" type="text"
+                        required placeholder="Название">
+                    <input name="input-url" class="form-item__textarea form-item__textarea_element_url" type="text"
+                        required placeholder="Ссылка на картинку">
+                </fieldset>
+                <button class="form-item__create" type="submit">Создать</button>
+            </form>
+        </div>
+    </section>
+
     <script src="./scripts/scripts.js"></script>
+
+    <template id="element-template">
+        <li class="element__item">
+        <image class="element__image" src="" alt="">
+        <button class="element__delete-button" type="button"></button>
+        <div class="element__caption">
+        <h2 class="element__text"></h2>
+        <button class="element__like" type="button"></button>
+        </div>
+        </div>
+    </template>
+
 </body>
 
 </html>

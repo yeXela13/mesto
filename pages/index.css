@@ -18,6 +18,7 @@
 /*element*/
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
+@import url(../blocks/element/__delete-button/element__delete-button.css);
 @import url(../blocks/element/__item/element__item.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__caption/element__caption.css);
@@ -36,3 +37,15 @@
 @import url(../blocks/form/__fieldset/form__fieldset.css);
 @import url(../blocks/form/__textarea/form__textarea.css);
 @import url(../blocks/form/__save/form__save.css);
+/*popap-item*/
+@import url(../blocks/popap-item/popap-item.css);
+@import url(../blocks/popap-item/__container/popap-item__container.css);
+@import url(../blocks/popap-item/_opened/popap-item_opened.css);
+@import url(../blocks/popap-item/__close/popap-item__close.css);
+@import url(../blocks/form-item/form-item.css);
+@import url(../blocks/form-item/__fieldset/form-item__fieldset.css);
+@import url(../blocks/form-item/__create/form-item__create.css);
+@import url(../blocks/form-item/__title/form-item__title.css);
+@import url(../blocks/form-item/__textarea/form-item__textarea.css);
+@import url(../blocks/form-item/__textarea/_element/form-item__textarea_element_name.css);
+@import url(../blocks/form-item/__textarea/_element/form-item__textarea_element_url.css);
