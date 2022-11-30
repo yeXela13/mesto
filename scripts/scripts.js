@@ -100,7 +100,6 @@ initialCards.forEach((item) => {
     renderCard(item);
     });
 
-
 //удаление карточки
 const deleteItemElementButton = document.querySelector('.element__delete-button');
 const deleteItemElement = function (event) {
@@ -110,7 +109,6 @@ deleteItemElementButton.addEventListener('click', deleteItemElement);
 
 //Лайк
 const likeElement = document.querySelector('.element__like');
-
 function likeElementClick(event) {
     likeElement.classList.toggle('element__like-active');
 }
