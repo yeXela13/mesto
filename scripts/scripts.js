@@ -78,7 +78,8 @@ const newCard = cardTemplate.cloneNode(true);
 const name = newCard.querySelector('.element__text');
 const link = newCard.querySelector('.element__image')
 name.textContent = item.name;
-link.textContent = item.link;
+link.src = item.link;
+link.alt = item.name;
 return newCard;
 }
 //обработчик
@@ -86,8 +87,6 @@ function formElementSubmitHandler(evt) {
     evt.preventDefault();
     renderCard({name: input.value})
     input.value = '';
-    //elementName.textContent = elementName.value;
-    //elementUrl.textContent = elementName.value;
     removePopapVisibility();
 }
 formItemElement.addEventListener('submit', formElementSubmitHandler);
@@ -105,5 +104,14 @@ initialCards.forEach((item) => {
 //удаление карточки
 const deleteItemElementButton = document.querySelector('.element__delete-button');
 const deleteItemElement = function (event) {
-    deleteItemElementButton.addEventListener('click',);
+initialCards.shift();
 }
+deleteItemElementButton.addEventListener('click', deleteItemElement);
+
+//Лайк
+const likeElement = document.querySelector('.element__like');
+
+function likeElementClick(event) {
+    likeElement.classList.toggle('element__like-active');
+}
+likeElement.addEventListener('click', likeElementClick);
