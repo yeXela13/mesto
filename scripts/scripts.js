@@ -81,6 +81,11 @@ const handleDeleteCard = (event) => {
 const handleLikeCard = (event) => {
     event.target.classList.toggle('element__like-active');
 };
+function handleFormElementSubmit(event) {
+ event.preventDefault();
+ console.log('проверка связи');
+ removePopapItemVisibility();
+ };
 //генерация карточки
 const generateCard = (item) => {
     const newCard = cardTemplate.cloneNode(true);
@@ -89,6 +94,7 @@ const generateCard = (item) => {
     const link = newCard.querySelector('.element__image')
     link.src = item.link;
     link.alt = item.name;
+    popapItemCreateButton.addEventListener('submit', handleFormElementSubmit);
     const deleteItemElement = newCard.querySelector('.element__delete-button');
     deleteItemElement.addEventListener('click', handleDeleteCard);
     const likeElement = newCard.querySelector('.element__like');
@@ -96,13 +102,8 @@ const generateCard = (item) => {
     return newCard;
 };
 //обработчик
-//function handleFormElementSubmit(event) {
- //   event.preventDefault();
- //
-   // console.log('проверка связи');
-    //removePopapItemVisibility();
-//};
-//formItemElement.addEventListener('submit', handleFormElementSubmit);
+//
+//
 
 //добавить карточки
 const renderCard = (item) => {
@@ -111,3 +112,4 @@ const renderCard = (item) => {
 initialCards.forEach((item) => {
     renderCard(item);
 });
+
