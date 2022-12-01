@@ -74,13 +74,14 @@ popapItemOpenElement.addEventListener('click', addPopapItemVisibility);
 popapItemClosebutton.addEventListener('click', removePopapItemVisibility);
 //шаблон
 const cardTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
-//генерация карточки
+
 const handleDeleteCard = (event) => {
     event.target.closest('.element__item').remove();
 };
 const handleLikeCard = (event) => {
     event.target.classList.toggle('element__like-active');
 };
+//генерация карточки
 const generateCard = (item) => {
     const newCard = cardTemplate.cloneNode(true);
     const name = newCard.querySelector('.element__text');
@@ -109,7 +110,6 @@ formItemElement.addEventListener('submit', handleFormElementSubmit);
 const renderCard = (item) => {
     elementList.prepend(generateCard(item));
 };
-
 initialCards.forEach((item) => {
     renderCard(item);
 });
