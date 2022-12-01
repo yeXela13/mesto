@@ -96,15 +96,13 @@ const generateCard = (item) => {
     return newCard;
 };
 //обработчик
-function handleFormElementSubmit(event) {
-    event.preventDefault();
-
-
-    
-    console.log('проверка связи');
-    removePopapItemVisibility();
-};
-formItemElement.addEventListener('submit', handleFormElementSubmit);
+//function handleFormElementSubmit(event) {
+ //   event.preventDefault();
+ //
+   // console.log('проверка связи');
+    //removePopapItemVisibility();
+//};
+//formItemElement.addEventListener('submit', handleFormElementSubmit);
 
 //добавить карточки
 const renderCard = (item) => {
