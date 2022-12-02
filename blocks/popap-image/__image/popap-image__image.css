@@ -1,4 +1,6 @@
 .popap-image__image {
+    max-height: 75%;
+    max-width: 75%;
     box-sizing: border-box;
     object-fit: cover;
 }

@@ -1,3 +1,4 @@
+import initialCards from './arrayCards.js'
 const popapElement = document.querySelector('.popap');
 const popapCloseElement = popapElement.querySelector('.popap__close');
 const popapOpenElement = document.querySelector('.profile__edit-button');
@@ -40,28 +41,7 @@ const placeElementText = document.querySelector('.element__text');
 const placeElementLink = document.querySelector('.element__image');
 const elementName = document.querySelector('.form-item__textarea_element_name');
 const elementUrl = document.querySelector('.form-item__textarea_element_url');
-const initialCards = [
-    {
-        name: 'Новая Зеландия',
-        link: 'https://images.unsplash.com/photo-1669158424156-01778fcc6427?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=712&q=80'
-    },
-    {
-        name: 'Мальдивы',
-        link: 'https://images.unsplash.com/photo-1669181310799-fc929c93ed58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80'
-    }, {
-        name: 'Турция',
-        link: 'https://images.unsplash.com/photo-1669111957726-9c2f6aec0199?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-    }, {
-        name: 'Малайзия',
-        link: 'https://images.unsplash.com/photo-1668694504921-5bcf11d34eef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-    }, {
-        name: 'Аргентина',
-        link: 'https://images.unsplash.com/photo-1668293498006-cf8ad7ef2470?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'
-    }, {
-        name: 'Грузия',
-        link: 'https://images.unsplash.com/photo-1668368047837-3d9c67145679?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80'
-    }
-]
+
 //Открыть/закрыть
 const addPopapItemVisibility = function (event) {
     popapItemElement.classList.add('popap-item_opened');
@@ -81,6 +61,19 @@ const handleDeleteCard = (event) => {
 const handleLikeCard = (event) => {
     event.target.classList.toggle('element__like-active');
 };
+const popapImageElement = document.querySelector('.popap-image');
+const popapImageClose = document.querySelector('.popap-image__close-button');
+const imageCardElement = document.querySelector('.element__image')
+
+function openPopapImage(event) {
+    popapImageElement.classList.add('popap-image_opened');
+    console.log('Открыть');
+}
+closePopapImage = (event) => {
+    popapImageElement.classList.remove('popap-image_opened');
+    console.log('Закрыть');
+}
+popapImageClose.addEventListener('click', closePopapImage);
 //генерация карточки
 const generateCard = (item) => {
     const newCard = cardTemplate.cloneNode(true);
@@ -90,10 +83,12 @@ const generateCard = (item) => {
     link.src = item.link;
     link.alt = item.name;
     popapItemCreateButton.addEventListener('click', handleFormElementSubmit);
+    link.addEventListener('click', openPopapImage);
     const deleteItemElement = newCard.querySelector('.element__delete-button');
     deleteItemElement.addEventListener('click', handleDeleteCard);
     const likeElement = newCard.querySelector('.element__like');
     likeElement.addEventListener('click', handleLikeCard);
+    
     return newCard;
 };
 //обработчик
@@ -110,15 +105,3 @@ const renderCard = (item) => {
 initialCards.forEach((item) => {
     renderCard(item);
 });
-
-//popap-image
-
-const popapImageElement = document.querySelector('.popap-image');
-const popapImageClose = document.querySelector('.popap-image__close-button');
-const imageCardElement = document.querySelector('.element__image')
-
-openPopapImage = () => {
-    popapImageElement.classList.toggle(popap-image_opened);
-    console.log('Открыть');
-}
-imageCardElement.addEventListener('click', openPopapImage);
