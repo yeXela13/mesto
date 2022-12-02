@@ -29,6 +29,7 @@ function formSubmitHandler(evt) {
 }
 formElement.addEventListener('submit', formSubmitHandler);
 //PopapItem
+
 const elementList = document.querySelector('.element');
 const popapItemElement = document.querySelector('.popap-item');
 const popapItemClosebutton = popapItemElement.querySelector('.popap-item__close')
@@ -74,14 +75,12 @@ popapItemOpenElement.addEventListener('click', addPopapItemVisibility);
 popapItemClosebutton.addEventListener('click', removePopapItemVisibility);
 //шаблон
 const cardTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
-
 const handleDeleteCard = (event) => {
     event.target.closest('.element__item').remove();
 };
 const handleLikeCard = (event) => {
     event.target.classList.toggle('element__like-active');
 };
-
 //генерация карточки
 const generateCard = (item) => {
     const newCard = cardTemplate.cloneNode(true);
@@ -104,7 +103,6 @@ function handleFormElementSubmit(event) {
     renderCard.value = '';
     removePopapItemVisibility();
 };
-
 //добавить карточки
 const renderCard = (item) => {
     elementList.prepend(generateCard(item));
@@ -113,3 +111,14 @@ initialCards.forEach((item) => {
     renderCard(item);
 });
 
+//popap-image
+
+const popapImageElement = document.querySelector('.popap-image');
+const popapImageClose = document.querySelector('.popap-image__close-button');
+const imageCardElement = document.querySelector('.element__image')
+
+openPopapImage = () => {
+    popapImageElement.classList.toggle(popap-image_opened);
+    console.log('Открыть');
+}
+imageCardElement.addEventListener('click', openPopapImage);

@@ -1,0 +1,12 @@
+.popap-image__container {
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 568px) {
+    .popap-image__container {
+        max-width: 282px;
+    }
+}

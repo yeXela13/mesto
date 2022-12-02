@@ -1,0 +1,5 @@
+.popap-image__box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
