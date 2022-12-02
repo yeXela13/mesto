@@ -88,7 +88,6 @@ const generateCard = (item) => {
     deleteItemElement.addEventListener('click', handleDeleteCard);
     const likeElement = newCard.querySelector('.element__like');
     likeElement.addEventListener('click', handleLikeCard);
-    return link;
     return newCard;
 };
 //обработчик
