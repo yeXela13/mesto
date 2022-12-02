@@ -41,8 +41,8 @@
 /*popap-item*/
 @import url(../blocks/popap-item/popap-item.css);
 @import url(../blocks/popap-item/__container/popap-item__container.css);
-@import url(../blocks/popap-item/_opened/popap-item_opened.css);
-@import url(../blocks/popap-item/__close/popap-item__close.css);
+    @import url(../blocks/popap-item/_opened/popap-item_opened.css);
+    @import url(../blocks/popap-item/__close/popap-item__close.css);
 @import url(../blocks/form-item/form-item.css);
 @import url(../blocks/form-item/__fieldset/form-item__fieldset.css);
 @import url(../blocks/form-item/__create/form-item__create.css);
@@ -52,9 +52,9 @@
 @import url(../blocks/form-item/__textarea/_element/form-item__textarea_element_url.css);
 /*popap-image*/
 @import url(../blocks/popap-image/popap-image.css);
-@import url(../blocks/popap-image/_opened/popap-image_opened.css);
-@import url(../blocks/popap-image/__container/popap-image__container.css);
+    @import url(../blocks/popap-image/_opened/popap-image_opened.css);
+    @import url(../blocks/popap-image/__container/popap-image__container.css);
 @import url(../blocks/popap-image/__box/popap-image__box.css);
-@import url(../blocks/popap-image/__close-button/popap-image__close-button.css);
+    @import url(../blocks/popap-image/__close-button/popap-image__close-button.css);
 @import url(../blocks/popap-image/__image/popap-image__image.css);
 @import url(../blocks/popap-image/__caption/popap-image__caption.css);
