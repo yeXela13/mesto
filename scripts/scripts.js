@@ -83,7 +83,6 @@ const generateCard = (item) => {
     link.src = item.link;
     link.alt = item.name;
     popapItemCreateButton.addEventListener('click', handleFormElementSubmit);
-    link.addEventListener('click', openPopapImage);
     const deleteItemElement = newCard.querySelector('.element__delete-button');
     deleteItemElement.addEventListener('click', handleDeleteCard);
     const likeElement = newCard.querySelector('.element__like');
