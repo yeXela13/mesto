@@ -55,8 +55,9 @@ const elementList = document.querySelector('.element__item');
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
 const popapImage = document.querySelector('.popap__image');
 const popapCaption = document.querySelector('.popap__caption');
-
-
+const renderCard = (item) => {
+    elementList.prepend(createElement(item));
+};
 
 const handleLikeButton = (e) => {
 e.target.closest('.element__item').classList.toggle('element__like-active');
@@ -64,9 +65,7 @@ e.target.closest('.element__item').classList.toggle('element__like-active');
 const handleDeleteButton = (e) => {
     e.target.closest('.element__item').remove();
 };
-const renderCard = (item) => {
-    elementList.prepend(createElement(item));
-};
+
 const formCreate = document.querySelector('.form-item');
 const formCreateName = document.querySelector('.form-item__textarea_element_name');
 const formCreateLink = document.querySelector('.form-item__textarea_element_url ');
@@ -98,7 +97,8 @@ function createElement(item) {
 };
 
 initialCards.forEach(function (item) {
-    createElement(item);
+    const elementCard = createElement(item);
+elementList.append(elementCard);
 });
 //Слушатель
 formCreate.addEventListener('submit', handleFormCreateSubmit);
