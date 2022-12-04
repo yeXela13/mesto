@@ -22,7 +22,6 @@ const initialCards = [
 ]
 const popapElement = document.querySelector('.popap');
 const popapEditElement = document.querySelector('.popap_edit-card');
-const popapCloseElement = document.querySelector('.popap__close');
 const popapOpenElement = document.querySelector('.profile__edit-button');
 const popapSaveButton = popapElement.querySelector('.form__save');
 const formElement = popapElement.querySelector('.form');
@@ -43,12 +42,15 @@ const cardTemplate = document.querySelector('#element-template').content.querySe
 const popapOpenCardElement = document.querySelector('.popap_open-card');
 const popapImage = document.querySelector('.popap__image');
 const popapCaption = document.querySelector('.popap__caption');
+const editCloseElement = popapEditElement.querySelector('.popap__close');
+const addCloseElement = popapItemElement.querySelector('.popap__close');
+const imageCloseElement = popapOpenCardElement.querySelector('.popap__close');
 
-function addPopapVisibility() {
-    popapElement.classList.add('popap_opened');
+function addPopapVisibility(argument) {
+    argument.classList.add('popap_opened');
 };
-function removePopapVisibility() {
-    popapElement.classList.remove('popap_opened');
+function removePopapVisibility(argument) {
+    argument.classList.remove('popap_opened');
 };
 function saveValues() {
     nameInput.value = profileName.textContent;
@@ -61,8 +63,16 @@ popapOpenElement.addEventListener('click', function addPopapEditVisibility() {
 popapItemOpenElement.addEventListener('click', function openAddPopapElement() {
     addPopapVisibility(popapItemElement);
 });
-popapCloseElement.addEventListener('click', removePopapVisibility);
 
+editCloseElement.addEventListener('click', function() {
+    removePopapVisibility(popapEditElement);
+});
+addCloseElement.addEventListener('click', function() {
+    removePopapVisibility(popapItemElement);
+});
+imageCloseElement.addEventListener('click', function() {
+    removePopapVisibility(popapOpenCardElement);
+});
 function formSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
@@ -70,7 +80,7 @@ function formSubmitHandler(evt) {
     removePopapVisibility();
 }
 formElement.addEventListener('submit', formSubmitHandler);
-//PopapItem
+
 const handleDeleteCard = (event) => {
     event.target.closest('.element__item').remove();
 };
@@ -78,9 +88,9 @@ const handleLikeCard = (event) => {
     event.target.classList.toggle('element__like-active');
 };
 const openCardPopap = function (event) {
-    popapImage.src = event.target.curentSrc;
-    popapImage.alt = event.target.curentAlt;
-    popapCaption.textContent = event.target.innerText;
+    popapImage.src = event.target.src;
+    popapImage.alt = event.target.alt;
+    popapCaption.textContent = event.target.parentNode.innerText;
     addPopapVisibility(popapOpenCardElement);
     };
 const generateCard = (item) => {

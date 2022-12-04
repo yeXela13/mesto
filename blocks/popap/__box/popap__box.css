@@ -1,8 +1,4 @@
-.popap-image__box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    top: 0;
-    left: 0;
+.popap__box {
+    position: relative;
+    margin: 0;
 }

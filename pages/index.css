@@ -50,6 +50,7 @@
 @import url(../blocks/form-item/__textarea/_element/form-item__textarea_element_url.css);
 /*popap-open-card*/
 @import url(../blocks/popap/_open-card/popap_open-card.css);
+@import url(../blocks/popap/__card-container/popap__card-container.css);
 @import url(../blocks/popap/__box/popap__box.css);
 @import url(../blocks/popap/__image/popap__image.css);
 @import url(../blocks/popap/__caption/popap__caption.css);

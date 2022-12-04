@@ -1,4 +1,6 @@
 .popap_opened {
-    transform: scale(100%);
     background-color: rgba(0, 0, 0, 0.5);
+    visibility: visible;
+    transition: visibility 0.6s, opacity 0.6s;
+    opacity: 1;
 }
