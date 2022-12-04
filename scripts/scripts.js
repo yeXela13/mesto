@@ -57,20 +57,20 @@ function saveValues() {
     postInput.value = profilePost.textContent;
 };
 popapOpenElement.addEventListener('click', function addPopapEditVisibility() {
-    addPopapVisibility (popapEditElement);
+    addPopapVisibility(popapEditElement);
     saveValues();
 });
 popapItemOpenElement.addEventListener('click', function openAddPopapElement() {
     addPopapVisibility(popapItemElement);
 });
 
-editCloseElement.addEventListener('click', function() {
+editCloseElement.addEventListener('click', function () {
     removePopapVisibility(popapEditElement);
 });
-addCloseElement.addEventListener('click', function() {
+addCloseElement.addEventListener('click', function () {
     removePopapVisibility(popapItemElement);
 });
-imageCloseElement.addEventListener('click', function() {
+imageCloseElement.addEventListener('click', function () {
     removePopapVisibility(popapOpenCardElement);
 });
 function formSubmitHandler(evt) {
@@ -92,7 +92,7 @@ const openCardPopap = function (event) {
     popapImage.alt = event.target.alt;
     popapCaption.textContent = event.target.parentNode.innerText;
     addPopapVisibility(popapOpenCardElement);
-    };
+};
 const generateCard = (item) => {
     const newCard = cardTemplate.cloneNode(true);
     const name = newCard.querySelector('.element__text');
