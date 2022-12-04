@@ -73,13 +73,14 @@ addCloseElement.addEventListener('click', function () {
 imageCloseElement.addEventListener('click', function () {
     removePopapVisibility(popapOpenCardElement);
 });
-function formSubmitHandler(evt) {
+function handleFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profilePost.textContent = postInput.value;
-    removePopapVisibility();
+    removePopapVisibility(popapEditElement);
 }
-formElement.addEventListener('submit', formSubmitHandler);
+
+formElement.addEventListener('submit', handleFormSubmit);
 
 const handleDeleteCard = (event) => {
     event.target.closest('.element__item').remove();
@@ -109,11 +110,11 @@ const generateCard = (item) => {
 };
 function handleFormElementSubmit(event) {
     event.preventDefault();
-    renderCard({ name: elementName.value, link: elementUrl.value });
-    renderCard.value = '';
     removePopapVisibility(popapItemElement);
+    renderCard({ name: elementName.value, link: elementUrl.value });
+    event.target.reset();
 };
-popapItemCreateButton.addEventListener('click', handleFormElementSubmit);
+formItemElement.addEventListener('submit', handleFormElementSubmit);
 
 const renderCard = (item) => {
     elementList.prepend(generateCard(item));
