@@ -33,7 +33,7 @@
         <p class="footer__info">&copy;2022 Mesto World</p>
     </footer>
 
-    <section class="popap">
+    <section class="popap popap_edit-card">
         <div class="popap__container">
             <button class="popap__close" type="button"></button>
             <form class="form" name="popat-form">
@@ -47,28 +47,27 @@
                 <button class="form__save" type="submit">Сохранить</button>
             </form>
         </div>
+    </section>
+    <section class="popap popap_add-card">
+        <button class="popap__close" type="button"></button>
+        <form class="form-item" name="popat-item-form">
+            <h2 class="form-item__title">Новое место</h2>
+            <fieldset class="form-item__fieldset">
+                <input name="input-place" class="form-item__textarea form-item__textarea_element_name" type="text"
+                    required placeholder="Название">
+                <input name="input-url" class="form-item__textarea form-item__textarea_element_url" type="text" required
+                    placeholder="Ссылка на картинку">
+            </fieldset>
+            <button class="form-item__create" type="submit">Создать</button>
+        </form>
+    </section>
 
-        <div class="popap popap__add-card">
+    <section class="popap popap_open-card">
+        <figure class="popap__box">
             <button class="popap__close" type="button"></button>
-            <form class="form-item" name="popat-item-form">
-                <h2 class="form-item__title">Новое место</h2>
-                <fieldset class="form-item__fieldset">
-                    <input name="input-place" class="form-item__textarea form-item__textarea_element_name" type="text"
-                        required placeholder="Название">
-                    <input name="input-url" class="form-item__textarea form-item__textarea_element_url" type="text"
-                        required placeholder="Ссылка на картинку">
-                </fieldset>
-                <button class="form-item__create" type="submit">Создать</button>
-            </form>
-        </div>
-
-        <div class="popap popap__open-card">
-            <figure class="popap__box">
-                <button class="popap__close" type="button"></button>
-                <img class="popap__image" src=" " alt=" ">
-                <figcaption class="popap__caption"></figcaption>
-            </figure>
-        </div>
+            <img class="popap__image" src=" " alt=" ">
+            <figcaption class="popap__caption"></figcaption>
+        </figure>
     </section>
 
     <template id="element-template">
@@ -79,7 +78,7 @@
                     <h2 class="element__text"></h2>
                     <button class="element__like" type="button"></button>
                 </div>
-            </li>
+        </li>
     </template>
     <script src="./scripts/scripts.js"></script>
 </body>
