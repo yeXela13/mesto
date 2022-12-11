@@ -23,7 +23,7 @@ const initialCards = [
 const popapElement = document.querySelector('.popap');
 const popapEditElement = document.querySelector('.popap_edit-card');
 const popapOpenElement = document.querySelector('.profile__edit-button');
-const popapSaveButton = popapElement.querySelector('.form__save');
+// const popapSaveButton = popapElement.querySelector('.form__save');
 const formElement = popapElement.querySelector('.form');
 const nameInput = formElement.querySelector('.form__textarea_profile_name');
 const postInput = formElement.querySelector('.form__textarea_profile_post');
@@ -32,7 +32,7 @@ const profilePost = document.querySelector('.profile__post');
 const elementList = document.querySelector('.element');
 const popapItemElement = document.querySelector('.popap_add-card');
 const popapItemOpenElement = document.querySelector('.profile__add-button');
-const popapItemCreateButton = popapItemElement.querySelector('.form-item__create');
+// const popapItemCreateButton = popapItemElement.querySelector('.form-item__create');
 const formItemElement = popapItemElement.querySelector('.form-item');
 const placeElementText = document.querySelector('.element__text');
 const placeElementLink = document.querySelector('.element__image');
@@ -45,6 +45,8 @@ const popapCaption = document.querySelector('.popap__caption');
 const editCloseElement = popapEditElement.querySelector('.popap__close');
 const addCloseElement = popapItemElement.querySelector('.popap__close');
 const imageCloseElement = popapOpenCardElement.querySelector('.popap__close');
+const forms = [...document.querySelectorAll('.form')];
+const inputs = [...document.querySelectorAll('form__textarea')];
 
 function addPopapVisibility(argument) {
     argument.classList.add('popap_opened');
@@ -122,3 +124,14 @@ const renderCard = (item) => {
 initialCards.forEach((item) => {
     renderCard(item);
 });
+
+
+
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  });

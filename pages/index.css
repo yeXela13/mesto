@@ -35,17 +35,21 @@
 @import url(../blocks/popap/__container/popap__container.css);
 @import url(../blocks/popap/__close/popap__close.css);
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/_edit/form_edit.css);
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__fieldset/form__fieldset.css);
 @import url(../blocks/form/__textarea/form__textarea.css);
-@import url(../blocks/form/__save/form__save.css);
+@import url(../blocks/form/__span/form__span.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__button/_disabled/form__button_disabled.css);
 /*popap-add*/
 @import url(../blocks/popap/_add-card/popap_add-card.css);
 @import url(../blocks/form-item/form-item.css);
 @import url(../blocks/form-item/__fieldset/form-item__fieldset.css);
-@import url(../blocks/form-item/__create/form-item__create.css);
 @import url(../blocks/form-item/__title/form-item__title.css);
-@import url(../blocks/form-item/__textarea/form-item__textarea.css);
+/* @import url(../blocks/form-item/__create/form-item__create.css);
+@import url(../blocks/form-item/__create/_inactive/form-item__create_inactive.css); */
+/* @import url(../blocks/form-item/__textarea/form-item__textarea.css); */
 @import url(../blocks/form-item/__textarea/_element/form-item__textarea_element_name.css);
 @import url(../blocks/form-item/__textarea/_element/form-item__textarea_element_url.css);
 /*popap-open-card*/
