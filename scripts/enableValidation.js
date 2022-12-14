@@ -1,7 +1,7 @@
 const checkValidity = (input, config) => {
-    const error = document.querySelector('.form__span');
+    const error = document.querySelector(`#${input.id}-error`);
     if (input.validity.valid) {
-        error.textContent = '';
+        error.textContent = ' ';
         input.classList.remove(config.errorClass);
         error.classList.remove(config.inputErrorClass);
     } else {
@@ -11,15 +11,14 @@ const checkValidity = (input, config) => {
     }
 };
 
-const toggleButtonDisabled = (inputs, config) => {
+const toggleButtonDisabled = (inputs, button, config) => {
     const isFormValid = inputs.every(input => input.validity.valid);
-    const button = document.querySelector(config.submitButtonSelector);
     if (isFormValid) {
-        button.classList.remove(config.inactiveButtonClass);
-        button.disabled = ' ';
+        button.classList.remove(config.inactiveButtonClass) // 
+        button.disabled = ' '
     } else {
-        button.disabled = 'disabled';
-        button.classList.add(config.inactiveButtonClass);
+        button.classList.add(config.inactiveButtonClass)
+        button.disabled = 'disabled'
     }
 };
 
@@ -27,26 +26,26 @@ const enableValidation = (config) => {
     const { formSelector, inputSelector, submitButtonSelector, ...restConfig } = config;
     const forms = [...document.querySelectorAll(formSelector)];
     forms.forEach(form => {
-        const inputs = [...document.querySelectorAll(inputSelector)];
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-        });
+        const inputs = [...form.querySelectorAll(inputSelector)];
+        const button = form.querySelector(submitButtonSelector);
 
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+        })
         inputs.forEach(input => {
             input.addEventListener('input', () => {
                 checkValidity(input, restConfig);
-                toggleButtonDisabled(inputs, restConfig)
-            });
-
-        });
-    });
-};
+                toggleButtonDisabled(inputs, button, restConfig);
+            })
+        })
+    })
+}
 
 enableValidation({
     formSelector: '.form',
     inputSelector: '.form__textarea',
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_disabled',
-    inputErrorClass: 'form__textarea_error',
-    errorClass: 'form__span_active'
+    inputErrorClass: 'form__span_active',
+    errorClass: 'form__textarea_error'
 });

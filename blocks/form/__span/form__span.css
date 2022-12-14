@@ -1,17 +1,4 @@
 .form__span {
-    max-width: 164px;
-    min-height: 12px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
     color: #FF0000;
-    margin-left: 36px;
-    visibility: hidden;
-    text-align: left;
-}
 
-@media screen and (max-width: 568px) {
-    .form__span {
-        margin-left: 22px;
-    }
-}  
+}
