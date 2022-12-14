@@ -6,6 +6,7 @@
     line-height: 15px;
     color: #FF0000;
     margin-left: 36px;
+    visibility: hidden;
     text-align: left;
 }
 
