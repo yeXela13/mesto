@@ -23,7 +23,6 @@ const initialCards = [
 const popapElement = document.querySelector('.popap');
 const popapEditElement = document.querySelector('.popap_edit-card');
 const popapOpenElement = document.querySelector('.profile__edit-button');
-// const popapSaveButton = popapElement.querySelector('.form__save');
 const formElement = popapElement.querySelector('.form');
 const nameInput = formElement.querySelector('.form__textarea_profile_name');
 const postInput = formElement.querySelector('.form__textarea_profile_post');
@@ -32,7 +31,6 @@ const profilePost = document.querySelector('.profile__post');
 const elementList = document.querySelector('.element');
 const popapItemElement = document.querySelector('.popap_add-card');
 const popapItemOpenElement = document.querySelector('.profile__add-button');
-// const popapItemCreateButton = popapItemElement.querySelector('.form-item__create');
 const formItemElement = popapItemElement.querySelector('.form-item');
 const placeElementText = document.querySelector('.element__text');
 const placeElementLink = document.querySelector('.element__image');
@@ -45,8 +43,7 @@ const popapCaption = document.querySelector('.popap__caption');
 const editCloseElement = popapEditElement.querySelector('.popap__close');
 const addCloseElement = popapItemElement.querySelector('.popap__close');
 const imageCloseElement = popapOpenCardElement.querySelector('.popap__close');
-const forms = [...document.querySelectorAll('.form')];
-const inputs = [...document.querySelectorAll('form__textarea')];
+
 
 function addPopapVisibility(argument) {
     argument.classList.add('popap_opened');
@@ -54,6 +51,30 @@ function addPopapVisibility(argument) {
 function removePopapVisibility(argument) {
     argument.classList.remove('popap_opened');
 };
+
+document.addEventListener('keyup', handleCloseEsc);
+
+function handleCloseEsc(event) {
+    if (event.key === 'Escape') {
+        popapElement.classList.remove('popap_opened');
+        popapItemElement.classList.remove('popap_opened');
+        popapOpenCardElement.classList.remove('popap_opened');
+    }
+};
+
+const closeToOverlay = function (event) {
+    if (event.target !== event.currentTarget) {
+        return;
+    }
+    popapElement.classList.remove('popap_opened');
+    popapItemElement.classList.remove('popap_opened');
+    popapOpenCardElement.classList.remove('popap_opened');
+};
+
+popapElement.addEventListener('click', closeToOverlay);
+popapItemElement.addEventListener('click', closeToOverlay);
+popapOpenCardElement.addEventListener('click', closeToOverlay);
+
 function saveValues() {
     nameInput.value = profileName.textContent;
     postInput.value = profilePost.textContent;
@@ -125,13 +146,66 @@ initialCards.forEach((item) => {
     renderCard(item);
 });
 
+// const showErrorLine = (element) => {
+//     element.classList.add('form__textarea_error')
+// };
+// const hideErrorLine = (element) => {
+//     element.classList.remove('form__textarea_error')
+// };
 
+const checkValidity = (input, config) => {
+    const error = document.querySelector('.form__span');
+      if(input.validity.valid) {
+      error.textContent = '';
+      input.classList.remove(config.errorClass);
+
+      error.classList.remove(config.inputErrorClass);
+    } else {
+      error.textContent = input.validationMessage;
+      input.classList.add(config.errorClass);
+
+      error.classList.add(config.inputErrorClass);
+    }
+  };
+
+const toggleButtonDisabled = (inputs, config) => {
+    const isFormValid = inputs.every(input => input.validity.valid);
+    const button = document.querySelector(config.submitButtonSelector);
+    if (isFormValid) {
+        button.classList.remove(config.inactiveButtonClass);
+        button.disabled = ' ';
+    } else {
+        button.classList.add(config.inactiveButtonClass);
+        button.disabled = 'disabled';
+    }
+};
+
+const enableValidation = (config) => {
+    const { formSelector, inputSelector, submitButtonSelector, ...restConfig } = config;
+    const forms = [...document.querySelectorAll(formSelector)];
+        forms.forEach(form => {
+            const inputs = [...document.querySelectorAll(inputSelector)];
+
+       form.addEventListener('submit', (event) => {
+            event.preventDefault();
+        });
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                checkValidity(input, restConfig);
+                toggleButtonDisabled(inputs, restConfig)
+                
+            });
+     
+    });
+});
+};
 
 enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  });
+    formSelector: '.form',
+    inputSelector: '.form__textarea',
+    submitButtonSelector: '.form__button',
+    inactiveButtonClass: 'form__button_disabled',
+    inputErrorClass: 'form__textarea_error',
+    errorClass: 'form__span_active'
+});
