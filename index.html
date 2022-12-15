@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
+    <script defer src="./scripts/enableValidation.js"></script>
+    <script defer src="./scripts/scripts.js"></script>
     <title>Mesto</title>
 </head>
 
@@ -33,9 +35,9 @@
         <p class="footer__info">&copy;2022 Mesto World</p>
     </footer>
 
-    <section class="popap popap_edit-card">
+    <section class="popap popup_edit-profile">
         <div class="popap__container">
-            <button class="popap__close" type="button"></button>
+            <button aria-label="сlose" class="popap__close" type="button"></button>
             <form class="form form_edit" name="popat-form" novalidate>
                 <h2 class="form__title">Редкатировать профиль</h2>
                 <fieldset class="form__fieldset">
@@ -46,26 +48,24 @@
                         placeholder="О себе" minlength="2" maxlength="200" required>
                     <span id="input-post-error" class="form__span"></span>
                 </fieldset>
-                <button class="form__button" type="submit">Сохранить</button>
+                <button aria-label="submit" class="form__button" type="submit">Сохранить</button>
             </form>
         </div>
     </section>
     <section class="popap popap_add-card">
         <div class="popap__container">
-            <button class="popap__close" type="button"></button>
+            <button aria-label="close" class="popap__close" type="button"></button>
             <form class="form form-item" name="popat-item-form" novalidate>
                 <h2 class="form-item__title">Новое место</h2>
                 <fieldset class="form-item__fieldset">
                     <input id="input-place" name="input-place" class="form__textarea form__textarea_element_name" type="text"
                         placeholder="Название" minlength="2" maxlength="30" required>
-                        <!-- form-item__textarea_element_name -->
                     <span id="input-place-error" class="form__span"></span>
                     <input id="input-url" name="input-url" class="form__textarea form__textarea_element_url" type="url"
                         placeholder="Ссылка на картинку" required>
-                        <!-- form-item__textarea_element_url -->
                     <span id="input-url-error" class="form__span"></span>
                 </fieldset>
-                <button class="form__button" type="submit" disabled>Создать</button>
+                <button aria-label="submit" class="form__button" type="submit">Создать</button>
             </form>
         </div>
     </section>
@@ -74,7 +74,7 @@
         <div class="popap__card-container">
             <figure class="popap__box">
                 <button class="popap__close" type="button"></button>
-                <img class="popap__image" src=" " alt=" ">
+                <img class="popap__image" src="#" alt="#">
                 <figcaption class="popap__caption"></figcaption>
             </figure>
         </div>
@@ -82,7 +82,7 @@
 
     <template id="element-template">
         <li class="element__item">
-            <image class="element__image" src=" " alt=" "></image>
+            <image class="element__image" src="#" alt="#"></image>
             <button class="element__delete-button" type="button"></button>
             <div class="element__caption">
                 <h2 class="element__text"></h2>
@@ -90,8 +90,7 @@
             </div>
         </li>
     </template>
-    <script src="./scripts/enableValidation.js"></script>
-    <script src="./scripts/scripts.js"></script>
+
 </body>
 
 </html>

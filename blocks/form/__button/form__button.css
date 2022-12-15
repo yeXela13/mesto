@@ -1,5 +1,6 @@
 .form__button {
     background-color: #000000;
+    box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
     width: 358px;
@@ -12,6 +13,7 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
+    
 }
 
 .form__button:hover {

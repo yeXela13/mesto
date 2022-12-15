@@ -31,7 +31,7 @@
 /*popap*/
 @import url(../blocks/popap/popap.css);
 @import url(../blocks/popap/_opened/popap_opened.css);
-@import url(../blocks/popap/_edit-card/popap_edit-card.css);
+@import url(../blocks/popap/_edit-profile/popup_edit-profile.css);
 @import url(../blocks/popap/__container/popap__container.css);
 @import url(../blocks/popap/__close/popap__close.css);
 @import url(../blocks/form/form.css);

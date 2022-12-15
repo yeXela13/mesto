@@ -21,7 +21,7 @@ const initialCards = [
     }
 ]
 const popapElement = document.querySelector('.popap');
-const popapEditElement = document.querySelector('.popap_edit-card');
+const popapEditElement = document.querySelector('.popup_edit-profile');
 const popapOpenElement = document.querySelector('.profile__edit-button');
 const formElement = popapElement.querySelector('.form');
 const nameInput = formElement.querySelector('.form__textarea_profile_name');
@@ -85,6 +85,9 @@ popapOpenElement.addEventListener('click', function addPopapEditVisibility() {
 });
 popapItemOpenElement.addEventListener('click', function openAddPopapElement() {
     addPopapVisibility(popapItemElement);
+    const button = popapItemElement.querySelector('.form__button');
+    button.disabled = 'disabled';
+    button.classList.add('form__button_disabled');
 });
 
 editCloseElement.addEventListener('click', function () {
