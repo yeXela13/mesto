@@ -56,14 +56,16 @@
             <form class="form form-item" name="popat-item-form" novalidate>
                 <h2 class="form-item__title">Новое место</h2>
                 <fieldset class="form-item__fieldset">
-                    <input id="input-place" name="input-place" class="form__textarea form-item__textarea_element_name" type="text"
+                    <input id="input-place" name="input-place" class="form__textarea form__textarea_element_name" type="text"
                         placeholder="Название" minlength="2" maxlength="30" required>
+                        <!-- form-item__textarea_element_name -->
                     <span id="input-place-error" class="form__span"></span>
-                    <input id="input-url" name="input-url" class="form__textarea form-item__textarea_element_url" type="url"
+                    <input id="input-url" name="input-url" class="form__textarea form__textarea_element_url" type="url"
                         placeholder="Ссылка на картинку" required>
+                        <!-- form-item__textarea_element_url -->
                     <span id="input-url-error" class="form__span"></span>
                 </fieldset>
-                <button class="form__button form__button_disabled" type="submit" disabled>Создать</button>
+                <button class="form__button" type="submit" disabled>Создать</button>
             </form>
         </div>
     </section>
@@ -80,7 +82,7 @@
 
     <template id="element-template">
         <li class="element__item">
-            <image class="element__image" src=" " alt=" "></image>
+            <image class="element__image" src=" " alt=" ">
             <button class="element__delete-button" type="button"></button>
             <div class="element__caption">
                 <h2 class="element__text"></h2>
