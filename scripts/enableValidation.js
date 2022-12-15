@@ -46,6 +46,6 @@ enableValidation({
     inputSelector: '.form__textarea',
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_disabled',
-    inputErrorClass: 'form__span_active',
+    inputErrorClass: 'form__span',
     errorClass: 'form__textarea_error'
 });

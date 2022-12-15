@@ -8,6 +8,8 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 568px) {
