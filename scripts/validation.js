@@ -45,9 +45,6 @@ const enableValidation = (config) => {
     forms.forEach(form => {
         const inputs = [...form.querySelectorAll(inputSelector)];
         const button = form.querySelector(submitButtonSelector);
-        form.addEventListener('submit', (e) => {
-            // e.preventDefault();
-        })
         inputs.forEach(input => {
             input.addEventListener('input', () => {
                 checkValidity(input, restConfig);

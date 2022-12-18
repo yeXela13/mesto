@@ -47,7 +47,6 @@ const imageCloseElement = popapOpenCardElement.querySelector('.popap__close');
 function openPopap(argument) {
     argument.classList.add('popap_opened');
     document.addEventListener('keyup', handleCloseEsc);
-    popapEditElement.addEventListener('click', closeToOverlay);
     const popaps = [...document.querySelectorAll('.popap')];
     popaps.forEach((element) => {
         element.addEventListener('click', closeToOverlay);
