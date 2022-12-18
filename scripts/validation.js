@@ -1,39 +1,41 @@
 
-function showError(formSelector, inputSelector, errorClass, inputErrorClass, errorMessage) {
- const error = formSelector.querySelector('`#${input.id}-error`');
-    error.textContent = errorMessage;
-    inputSelector.classList.add(errorClass);
-    error.classList.add(inputErrorClass);
-};
-function hideError(formSelector, inputSelector, errorClass, inputErrorClass) {
-    const error = formSelector.querySelector('`#${input.id}-error`');
-    error.textContent = ' ';
-    inputSelector.classList.remove(errorClass);
-    error.classList.remove(inputErrorClass);
-};
+const showError = ((input, config) => {
+    const error = document.querySelector(`#${input.id}-error`);
+    error.textContent = input.validationMessage;
+    input.classList.add(config.errorClass);
+    error.classList.add(config.inputErrorClass);
+});
 
-function checkValidity(input) {
+const hideError = ((input, config) => {
+    const error = document.querySelector(`#${input.id}-error`);
+    error.textContent = ' ';
+    input.classList.remove(config.errorClass);
+    error.classList.remove(config.inputErrorClass);
+});
+
+
+const checkValidity = (input, config) => {
     if (input.validity.valid) {
-        showError(formSelector, inputSelector, inputSelector.validationMessage, errorClass, inputErrorClass, errorMessage);
+        hideError(input, config)
     } else {
-        hideError(formSelector, inputSelector, errorClass, inputErrorClass);
+        showError(input, config)
     }
 };
 
-function buttonActive (button, inactiveButtonClass) {
-    button.classList.remove(inactiveButtonClass) 
-}
-function buttonInActive (button, inactiveButtonClass) {
-    button.classList.add(inactiveButtonClass)
+const buttonActive = ((button, config) => {
+    button.classList.remove(config.inactiveButtonClass)
+    button.disabled = ''
+});
+const buttonDisabled = ((button, config) => {
+    button.classList.add(config.inactiveButtonClass)
     button.disabled = 'disabled'
-}
-
-const toggleButtonDisabled = (inputs) => {
+});
+const toggleButtonDisabled = (inputs, button, config) => {
     const isFormValid = inputs.every(input => input.validity.valid);
-    if (isFormValid) {
-        buttonActive(inputs);
-        } else {
-            buttonInActive(inputs);
+    if (!isFormValid) {
+        buttonDisabled(button, config)
+    } else {
+        buttonActive(button, config)
     }
 };
 
@@ -43,9 +45,8 @@ const enableValidation = (config) => {
     forms.forEach(form => {
         const inputs = [...form.querySelectorAll(inputSelector)];
         const button = form.querySelector(submitButtonSelector);
-
         form.addEventListener('submit', (e) => {
-            e.preventDefault();
+            // e.preventDefault();
         })
         inputs.forEach(input => {
             input.addEventListener('input', () => {
@@ -63,4 +64,4 @@ enableValidation({
     inactiveButtonClass: 'form__button_disabled',
     inputErrorClass: 'form__span',
     errorClass: 'form__textarea_error'
-});
+}); 

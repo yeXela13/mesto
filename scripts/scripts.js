@@ -1,3 +1,4 @@
+
 const initialCards = [
     {
         name: 'Новая Зеландия',
@@ -87,9 +88,9 @@ popapOpenEditProfile.addEventListener('click', function openPopapEdit() {
 });
 popapItemOpenElement.addEventListener('click', function openPopapAddCard() {
     openPopap(popapItemElement);
-    // const button = popapItemElement.querySelector('.form__button');
-    // button.disabled = 'disabled';
-    // button.classList.add('form__button_disabled');
+    const button = popapItemElement.querySelector('.form__button');
+    button.disabled = 'disabled';
+    button.classList.add('form__button_disabled');
 });
 
 function handleProfileFormSubmit(evt) {
@@ -97,7 +98,6 @@ function handleProfileFormSubmit(evt) {
     profileName.textContent = nameInput.value;
     profilePost.textContent = postInput.value;
     closePopap(popapEditElement);
-    console.log('закрыть');
 }
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
