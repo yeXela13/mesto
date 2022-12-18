@@ -21,7 +21,7 @@ const initialCards = [
         link: 'https://images.unsplash.com/photo-1668368047837-3d9c67145679?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80'
     }
 ]
-const popapEditElement = document.querySelector('.popup_edit-profile');
+const popapEditElement = document.querySelector('.popap_edit-profile');
 const popapOpenEditProfile = document.querySelector('.profile__edit-button');
 const formEditProfile = popapEditElement.querySelector('.form_edit');
 const nameInput = formEditProfile.querySelector('.form__textarea_profile_name');
