@@ -41,6 +41,7 @@
 @import url(../blocks/form/__textarea/form__textarea.css);
 @import url(../blocks/form/__textarea/_error/form__textarea_error.css);
 @import url(../blocks/form/__span/form__span.css);
+@import url(../blocks/form/__span/_active/form__span_active.css);
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__button/_disabled/form__button_disabled.css);
 /*popap-add*/

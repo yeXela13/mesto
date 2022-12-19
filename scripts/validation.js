@@ -22,20 +22,20 @@ const checkValidity = (input, config) => {
     }
 };
 
-const buttonActive = ((button, config) => {
+const makeButtonActive = ((button, config) => {
     button.classList.remove(config.inactiveButtonClass)
     button.disabled = ''
 });
-const buttonDisabled = ((button, config) => {
+const makeButtonDisabled = ((button, config) => {
     button.classList.add(config.inactiveButtonClass)
     button.disabled = 'disabled'
 });
 const toggleButtonDisabled = (inputs, button, config) => {
     const isFormValid = inputs.every(input => input.validity.valid);
     if (!isFormValid) {
-        buttonDisabled(button, config)
+        makeButtonDisabled(button, config)
     } else {
-        buttonActive(button, config)
+        makeButtonActive(button, config)
     }
 };
 
@@ -59,6 +59,6 @@ enableValidation({
     inputSelector: '.form__textarea',
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_disabled',
-    inputErrorClass: 'form__span',
+    inputErrorClass: 'form__span_active',
     errorClass: 'form__textarea_error'
 }); 

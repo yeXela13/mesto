@@ -47,24 +47,22 @@ const imageCloseElement = popapOpenCardElement.querySelector('.popap__close');
 function openPopap(argument) {
     argument.classList.add('popap_opened');
     document.addEventListener('keyup', handleCloseEsc);
-    const popaps = [...document.querySelectorAll('.popap')];
-    popaps.forEach((element) => {
-        element.addEventListener('click', closeToOverlay);
-    });
+    argument.addEventListener('click', closeToOverlay);
 };
 function closePopap(argument) {
     argument.classList.remove('popap_opened');
-    document.removeEventListener('keyup', handleCloseEsc);
+    argument.removeEventListener('click', closeToOverlay);
+    document.addEventListener('keyup', handleCloseEsc);
 };
 function handleCloseEsc(event) {
-    const openedPopap = document.querySelector('.popap_opened');
     if (event.key === 'Escape') {
+        const openedPopap = document.querySelector('.popap_opened');
         closePopap(openedPopap);
     }
 };
 const closeToOverlay = function (event) {
-    const openedPopap = document.querySelector('.popap_opened');
     if (event.target === event.currentTarget) {
+        const openedPopap = event.currentTarget;
         closePopap(openedPopap);
     }
 };
