@@ -52,7 +52,7 @@ function openPopap(argument) {
 function closePopap(argument) {
     argument.classList.remove('popap_opened');
     argument.removeEventListener('click', closeToOverlay);
-    document.addEventListener('keyup', handleCloseEsc);
+    document.removeEventListener('keyup', handleCloseEsc);
 };
 function handleCloseEsc(event) {
     if (event.key === 'Escape') {
