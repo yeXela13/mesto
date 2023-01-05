@@ -37,12 +37,13 @@ const placeElementLink = document.querySelector('.element__image');
 const elementName = document.querySelector('.form__textarea_element_name');
 const elementUrl = document.querySelector('.form__textarea_element_url');
 // const cardTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
+// const popapImage = document.querySelector('.popap__image');
+// const popapCaption = document.querySelector('.popap__caption');
 const popapOpenCardElement = document.querySelector('.popap_open-card');
-const popapImage = document.querySelector('.popap__image');
-const popapCaption = document.querySelector('.popap__caption');
 const editCloseElement = popapEditElement.querySelector('.popap__close');
 const addCloseElement = popapItemElement.querySelector('.popap__close');
 const imageCloseElement = popapOpenCardElement.querySelector('.popap__close');
+import { Card } from "./card.js";
 
 function openPopap(argument) {
     argument.classList.add('popap_opened');
@@ -104,12 +105,12 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 // const handleLikeCard = (event) => {
 //     event.target.classList.toggle('element__like-active');
 // };
-const openCardPopap = function (event) {
-    popapImage.src = event.target.src;
-    popapImage.alt = event.target.alt;
-    popapCaption.textContent = event.target.alt;
-    openPopap(popapOpenCardElement);
-};
+// const openCardPopap = function (event) {
+//     popapImage.src = event.target.src;
+//     popapImage.alt = event.target.alt;
+//     popapCaption.textContent = event.target.alt;
+//     openPopap(popapOpenCardElement);
+// };
 
 // const generateCard = (item) => {
 //     const newCard = cardTemplate.cloneNode(true);

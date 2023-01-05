@@ -21,7 +21,13 @@ const initialCards = [
     }
 ]
 
-class Card {
+const popapOpenCardElement = document.querySelector('.popap_open-card');
+const popapImage = document.querySelector('.popap__image');
+const closePopap = document.querySelector('.popap__close');
+const popapCaption = document.querySelector('.popap__caption');
+
+
+export class Card {
     constructor(initialCards, templateSelector) {
         this._name = initialCards.name;
         this._link = initialCards.link;
@@ -30,33 +36,57 @@ class Card {
 
     _getTemplate() {
         const cardElement = document.querySelector(this._templateSelector).content.querySelector('.element__item').cloneNode(true);
-        // console.log(cardElement);
         return cardElement;
     }
 
-    _handleDeleteCard = (event) => {
-        event.target.closest('.element__item').remove();
+    _handleDeleteCard() {
+        this._element.remove();
     }
-    _handleLikeCard = (event) => {
-        event.target.classList.toggle('element__like-active');
+    _handleLikeCard(likeButton) {
+        likeButton.classList.toggle('element__like-active');
     }
-    _setEventListeners() {
-        const deleteButton = document.querySelector('.element__delete-button');
-        const likeButton = document.querySelector('.element__like');
 
-        deleteButton.addEventListener('click', () => {
-            this._handleDeleteCard()
-        });
-        likeButton.addEventListener('click', () => {
-            this._handleLikeCard()
-        });
+    _handleOpenCardPopap() {
+        popapImage.src = this._link;
+        popapImage.alt = this._name;
+        popapCaption.textContent = this._name;
+        popapOpenCardElement.classList.add('popap_opened');
     }
+
+    _handleCloseCardPopap() {
+        popapImage.src = '';
+        popapImage.alt = '';
+        popapCaption.textContent = '';
+        popapOpenCardElement.classList.remove('popap_opened');
+    }
+
+    _setEventListeners(deleteButton, likeButton) {
+        this._element.addEventListener('click', () => {
+            this._handleOpenCardPopap()
+        });
+        closePopap.addEventListener('click', () => {
+            this._handleCloseCardPopap()
+        });
+        console.log(deleteButton);
+        console.log(likeButton);
+    //     deleteButton.addEventListener('click', () => {
+    //         this._handleDeleteCard()
+    //     });
+    //     likeButton.addEventListener('click', () => {
+    //         this._handleLikeCard()
+    //     });
+    }
+
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
         this._element.querySelector('.element__text').textContent = this._name;
         this._element.querySelector('.element__image').src = this._link;
         this._element.querySelector('.element__image').alt = this._name;
+        const deleteButton = this._element.querySelector('.element__delete-button');
+        const likeButton = this._element.querySelector('.element__like');
+        console.log(deleteButton);
+        console.log(likeButton);
+        this._setEventListeners();
         return this._element;
 
     }
