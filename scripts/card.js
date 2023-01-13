@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
     {
         name: 'Новая Зеландия',
         link: 'https://images.unsplash.com/photo-1669158424156-01778fcc6427?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=712&q=80'
@@ -21,17 +21,12 @@ const initialCards = [
     }
 ]
 
-const popapOpenCardElement = document.querySelector('.popap_open-card');
-const popapImage = document.querySelector('.popap__image');
-const closePopap = document.querySelector('.popap__close');
-const popapCaption = document.querySelector('.popap__caption');
-
-
 export class Card {
-    constructor(initialCards, templateSelector) {
+    constructor(initialCards, templateSelector, handleOpenCardPopap) {
         this._name = initialCards.name;
         this._link = initialCards.link;
         this._templateSelector = templateSelector;
+        this._handleOpenCardPopap = handleOpenCardPopap;
     }
 
     _getTemplate() {
@@ -42,39 +37,29 @@ export class Card {
     _handleDeleteCard() {
         this._element.remove();
     }
+
     _handleLikeCard(likeButton) {
+
         likeButton.classList.toggle('element__like-active');
     }
 
-    _handleOpenCardPopap() {
-        popapImage.src = this._link;
-        popapImage.alt = this._name;
-        popapCaption.textContent = this._name;
-        popapOpenCardElement.classList.add('popap_opened');
-    }
-
-    _handleCloseCardPopap() {
-        popapImage.src = '';
-        popapImage.alt = '';
-        popapCaption.textContent = '';
-        popapOpenCardElement.classList.remove('popap_opened');
-    }
+    // _handleOpenCardPopap() {
+    //     // console.log(popapOpenCardElement);
+    //     document.querySelector('.popap_open-card').classList.add('popap_opened');
+    // }
 
     _setEventListeners(deleteButton, likeButton) {
-        this._element.addEventListener('click', () => {
-            this._handleOpenCardPopap()
+        // this._element.querySelector('.element__image').addEventListener('click', () => {
+        //     this._handleOpenCardPopap(this._link, this._name)
+        // });
+
+        deleteButton.addEventListener('click', () => {
+            this._handleDeleteCard()
         });
-        closePopap.addEventListener('click', () => {
-            this._handleCloseCardPopap()
+
+        likeButton.addEventListener('click', () => {
+            this._handleLikeCard(likeButton)
         });
-        console.log(deleteButton);
-        console.log(likeButton);
-    //     deleteButton.addEventListener('click', () => {
-    //         this._handleDeleteCard()
-    //     });
-    //     likeButton.addEventListener('click', () => {
-    //         this._handleLikeCard()
-    //     });
     }
 
     generateCard() {
@@ -84,16 +69,8 @@ export class Card {
         this._element.querySelector('.element__image').alt = this._name;
         const deleteButton = this._element.querySelector('.element__delete-button');
         const likeButton = this._element.querySelector('.element__like');
-        console.log(deleteButton);
-        console.log(likeButton);
-        this._setEventListeners();
+        this._setEventListeners(deleteButton, likeButton);
         return this._element;
-
-    }
-
+         }
+    
 }
-initialCards.forEach(item => {
-    const card = new Card(item, '.element-template');
-    const cardElement = card.generateCard();
-    document.querySelector('.element').append(cardElement);
-});
