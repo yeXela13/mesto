@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
+    <script defer src="./scripts/formValidator.js" type="module"></script>
     <script defer src="./scripts/card.js" type="module"></script>
-    <script defer src="./scripts/scripts.js" type="module"></script>
-    <script defer src="./scripts/validation.js" type="module"></script>
+    <script defer src="./scripts/index.js" type="module"></script>
     <title>Mesto</title>
 </head>
 
@@ -81,7 +81,7 @@
         </div>
     </section>
 
-    <template class="element-template">
+    <template id="element-template">
         <li class="element__item">
             <image class="element__image" src="#" alt="#"></image>
             <button class="element__delete-button" type="button"></button>
