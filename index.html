@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
-    <script defer src="./scripts/formValidator.js" type="module"></script>
-    <script defer src="./scripts/card.js" type="module"></script>
     <script defer src="./scripts/index.js" type="module"></script>
     <title>Mesto</title>
 </head>
@@ -41,14 +39,12 @@
             <button aria-label="сlose" class="popap__close" type="button"></button>
             <form class="form form_edit" name="popat-form" novalidate>
                 <h2 class="form__title">Редкатировать профиль</h2>
-                <fieldset class="form__fieldset">
-                    <input id="input-name" name="input-name" class="form__textarea form__textarea_profile_name"
-                        type="text" placeholder="Имя" minlength="2" maxlength="40" required>
-                    <span id="input-name-error" class="form__span form__span_active"></span>
-                    <input id="input-post" name="input-post" class="form__textarea form__textarea_profile_post"
-                        type="text" placeholder="О себе" minlength="2" maxlength="200" required>
-                    <span id="input-post-error" class="form__span form__span_active"></span>
-                </fieldset>
+                <input id="input-name" name="input-name" class="form__textarea form__textarea_profile_name" type="text"
+                    placeholder="Имя" minlength="2" maxlength="40" required>
+                <span id="input-name-error" class="form__span form__span_active"></span>
+                <input id="input-post" name="input-post" class="form__textarea form__textarea_profile_post" type="text"
+                    placeholder="О себе" minlength="2" maxlength="200" required>
+                <span id="input-post-error" class="form__span form__span_active"></span>
                 <button aria-label="submit" class="form__button" type="submit">Сохранить</button>
             </form>
         </div>
@@ -58,14 +54,12 @@
             <button aria-label="close" class="popap__close" type="button"></button>
             <form class="form form-item" name="popat-item-form" novalidate>
                 <h2 class="form-item__title">Новое место</h2>
-                <fieldset class="form-item__fieldset">
-                    <input id="input-place" name="input-place" class="form__textarea form__textarea_element_name"
-                        type="text" placeholder="Название" minlength="2" maxlength="30" required>
-                    <span id="input-place-error" class="form__span form__span_active"></span>
-                    <input id="input-url" name="input-url" class="form__textarea form__textarea_element_url" type="url"
-                        placeholder="Ссылка на картинку" required>
-                    <span id="input-url-error" class="form__span form__span_active"></span>
-                </fieldset>
+                <input id="input-place" name="input-place" class="form__textarea form__textarea_element_name"
+                    type="text" placeholder="Название" minlength="2" maxlength="30" required>
+                <span id="input-place-error" class="form__span form__span_active"></span>
+                <input id="input-url" name="input-url" class="form__textarea form__textarea_element_url" type="url"
+                    placeholder="Ссылка на картинку" required>
+                <span id="input-url-error" class="form__span form__span_active"></span>
                 <button aria-label="submit" class="form__button" type="submit">Создать</button>
             </form>
         </div>
