@@ -42,22 +42,21 @@ const elementList = document.querySelector('.element');
 const popapItemElement = document.querySelector('.popap_add-card');
 const popapItemOpenElement = document.querySelector('.profile__add-button');
 const formItemElement = popapItemElement.querySelector('.form-item');
-const placeElementText = document.querySelector('.element__text');
-const placeElementLink = document.querySelector('.element__image');
+// const placeElementText = document.querySelector('.element__text');
+// const placeElementLink = document.querySelector('.element__image');
 const elementName = document.querySelector('.form__textarea_element_name');
 const elementUrl = document.querySelector('.form__textarea_element_url');
 const cardTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
 const popapOpenCardElement = document.querySelector('.popap_open-card');
 const popapImage = document.querySelector('.popap__image');
 const popapCaption = document.querySelector('.popap__caption');
-const editCloseElement = popapEditElement.querySelector('.popap__close');
-const addCloseElement = popapItemElement.querySelector('.popap__close');
-const imageCloseElement = popapOpenCardElement.querySelector('.popap__close');
-
-const editProfileFormValidation = new FormValidator(config, formEditProfile);
-const addCardFormValidation = new FormValidator(config, formItemElement);
-editProfileFormValidation.enableValidation();
-addCardFormValidation.enableValidation();
+const buttonCloseList = document.querySelectorAll('.popap__close'); 
+const profileEditFormValidation = new FormValidator(config, formEditProfile);
+const CardElementFormValidation = new FormValidator(config, formItemElement);
+profileEditFormValidation.enableValidation();
+CardElementFormValidation.enableValidation();
+profileEditFormValidation.resetValidation();
+CardElementFormValidation.resetValidation();
 
 function openPopap(argument) {
     argument.classList.add('popap_opened');
@@ -81,15 +80,12 @@ const closeToOverlay = function (event) {
         closePopap(openedPopap);
     }
 };
-editCloseElement.addEventListener('click', function () {
-    closePopap(popapEditElement);
-});
-addCloseElement.addEventListener('click', function () {
-    closePopap(popapItemElement);
-});
-imageCloseElement.addEventListener('click', function () {
-    closePopap(popapOpenCardElement);
-});
+buttonCloseList.forEach(btn => {
+    const popap = btn.closest('.popap');
+    popap.addEventListener('mousedown', closeToOverlay);
+    btn.addEventListener('click', () => closePopap(popap)); 
+  }); 
+
 function fillPopupEditFields() {
     nameInput.value = profileName.textContent;
     postInput.value = profilePost.textContent;
@@ -100,9 +96,9 @@ popapOpenEditProfile.addEventListener('click', function openPopapEdit() {
 });
 popapItemOpenElement.addEventListener('click', function openPopapAddCard() {
     openPopap(popapItemElement);
-    const button = popapItemElement.querySelector('.form__button');
-    button.disabled = 'disabled';
-    button.classList.add('form__button_disabled');
+    // const button = popapItemElement.querySelector('.form__button');
+    // button.disabled = 'disabled';
+    // button.classList.add('form__button_disabled');
 });
 
 function handleProfileFormSubmit(evt) {
@@ -152,8 +148,8 @@ initialCards.forEach((item) => {
     //     link.src = item.link;
     //     link.alt = item.name;
     //     const deleteItemElement = newCard.querySelector('.element__delete-button');
-    //     deleteItemElement.addEventListener('click', handleDeleteCard);
     //     const likeElement = newCard.querySelector('.element__like');
+    //     deleteItemElement.addEventListener('click', handleDeleteCard);
 //     likeElement.addEventListener('click', handleLikeCard);
 //     link.addEventListener('click', openCardPopap);
 //     return newCard;
