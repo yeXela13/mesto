@@ -28,8 +28,8 @@ const config = {
     inputErrorClass: 'form__span_active',
     errorClass: 'form__textarea_error'
 };
-import { FormValidator } from './formValidator.js'
-import { Card } from './card.js';
+import { FormValidator } from './FormValidator.js'
+import { Card } from './Card.js';
 
 const popapEditElement = document.querySelector('.popap_edit-profile');
 const popapOpenEditProfile = document.querySelector('.profile__edit-button');
