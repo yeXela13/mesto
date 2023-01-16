@@ -48,15 +48,16 @@ const cardTemplate = document.querySelector('#element-template').content.querySe
 const popapOpenCardElement = document.querySelector('.popap_open-card');
 const popapImage = document.querySelector('.popap__image');
 const popapCaption = document.querySelector('.popap__caption');
-const buttonCloseList = document.querySelectorAll('.popap__close'); 
+const buttonCloseList = document.querySelectorAll('.popap__close');
 const profileEditFormValidation = new FormValidator(config, formEditProfile);
-const CardElementFormValidation = new FormValidator(config, formItemElement);
+const cardElementFormValidation = new FormValidator(config, formItemElement);
 profileEditFormValidation.enableValidation();
-CardElementFormValidation.enableValidation();
-profileEditFormValidation.resetValidation();
-CardElementFormValidation.resetValidation();
+cardElementFormValidation.enableValidation();
+
 
 function openPopap(argument) {
+    profileEditFormValidation.resetValidation();
+    cardElementFormValidation.resetValidation();
     argument.classList.add('popap_opened');
     document.addEventListener('keyup', handleCloseEsc);
     argument.addEventListener('click', closeToOverlay);
@@ -81,8 +82,8 @@ const closeToOverlay = function (event) {
 buttonCloseList.forEach(btn => {
     const popap = btn.closest('.popap');
     popap.addEventListener('mousedown', closeToOverlay);
-    btn.addEventListener('click', () => closePopap(popap)); 
-  }); 
+    btn.addEventListener('click', () => closePopap(popap));
+});
 
 function fillPopupEditFields() {
     nameInput.value = profileName.textContent;
@@ -90,13 +91,12 @@ function fillPopupEditFields() {
 };
 popapOpenEditProfile.addEventListener('click', function openPopapEdit() {
     openPopap(popapEditElement);
+    profileEditFormValidation.resetValidation();
     fillPopupEditFields();
 });
 popapItemOpenElement.addEventListener('click', function openPopapAddCard() {
     openPopap(popapItemElement);
-    // const button = popapItemElement.querySelector('.form__button');
-    // button.disabled = 'disabled';
-    // button.classList.add('form__button_disabled');
+    cardElementFormValidation.resetValidation();
 });
 
 function handleProfileFormSubmit(evt) {
@@ -116,6 +116,7 @@ const handleopenCardPopap = (link, name) => {
 
 function handleFormElementSubmit(event) {
     event.preventDefault();
+
     closePopap(popapItemElement);
     renderCard({ name: elementName.value, link: elementUrl.value });
     event.target.reset();
