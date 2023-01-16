@@ -56,8 +56,6 @@ cardElementFormValidation.enableValidation();
 
 
 function openPopap(argument) {
-    profileEditFormValidation.resetValidation();
-    cardElementFormValidation.resetValidation();
     argument.classList.add('popap_opened');
     document.addEventListener('keyup', handleCloseEsc);
     argument.addEventListener('click', closeToOverlay);
