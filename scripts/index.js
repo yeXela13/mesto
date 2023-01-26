@@ -30,106 +30,142 @@ const config = {
 };
 import { FormValidator } from './FormValidator.js'
 import { Card } from './Card.js';
+import { Popup } from './Popup.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './UserInfo.js';
+import { Section } from './Section.js';
 
+// const popapImage = document.querySelector('.popap__image');
+// const popapCaption = document.querySelector('.popap__caption');
+// const buttonCloseList = document.querySelectorAll('.popap__close');
+// const profileName = document.querySelector('.profile__name');
+// const profilePost = document.querySelector('.profile__post');
+// const cardContainerSelector = '.element';
+// const cardSelector = '#element-template'
+// const cardTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
+
+// const elementList = document.querySelector('.element');
 const popapEditElement = document.querySelector('.popap_edit-profile');
 const popapOpenEditProfile = document.querySelector('.profile__edit-button');
 const formEditProfile = popapEditElement.querySelector('.form_edit');
 const nameInput = formEditProfile.querySelector('.form__textarea_profile_name');
 const postInput = formEditProfile.querySelector('.form__textarea_profile_post');
-const profileName = document.querySelector('.profile__name');
-const profilePost = document.querySelector('.profile__post');
-const elementList = document.querySelector('.element');
 const popapItemElement = document.querySelector('.popap_add-card');
-const popapItemOpenElement = document.querySelector('.profile__add-button');
+const popapAddCardElement = document.querySelector('.profile__add-button');
 const formItemElement = popapItemElement.querySelector('.form-item');
-const elementName = document.querySelector('.form__textarea_element_name');
-const elementUrl = document.querySelector('.form__textarea_element_url');
-const cardTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
-const popapOpenCardElement = document.querySelector('.popap_open-card');
-const popapImage = document.querySelector('.popap__image');
-const popapCaption = document.querySelector('.popap__caption');
-const buttonCloseList = document.querySelectorAll('.popap__close');
+// const elementName = document.querySelector('.form__textarea_element_name');
+// const elementUrl = document.querySelector('.form__textarea_element_url');
+// const popapOpenCardElement = document.querySelector('.popap_open-card');
+
+
 const profileEditFormValidation = new FormValidator(config, formEditProfile);
 const cardElementFormValidation = new FormValidator(config, formItemElement);
 profileEditFormValidation.enableValidation();
 cardElementFormValidation.enableValidation();
 
+//Попап с изображением
+const popupWithImage = new PopupWithImage('.popap_open-card')
+popupWithImage.setEventListeners();
+const handleopenCardPopap = (name, link) => {
+    popupWithImage.open(name, link);
+};
+//  попап добавления карточки
+const handleAddCardSubmit = (event, values) => {
+    console.log('values =>', values)
+    event.preventDefault();
+    const newCard = renderCard(values)
+    cardSection.addItem(newCard);
+    // renderCard({
+    //     name: elementName.value,
+    //     link: elementUrl.value
+    // });
+    addCardItemForm.close()
+};
 
-function openPopap(argument) {
-    argument.classList.add('popap_opened');
-    document.addEventListener('keyup', handleCloseEsc);
-    argument.addEventListener('click', closeToOverlay);
-};
-function closePopap(argument) {
-    argument.classList.remove('popap_opened');
-    argument.removeEventListener('click', closeToOverlay);
-    document.removeEventListener('keyup', handleCloseEsc);
-};
-function handleCloseEsc(event) {
-    if (event.key === 'Escape') {
-        const openedPopap = document.querySelector('.popap_opened');
-        closePopap(openedPopap);
-    }
-};
-const closeToOverlay = function (event) {
-    if (event.target === event.currentTarget) {
-        const openedPopap = event.currentTarget;
-        closePopap(openedPopap);
-    }
-};
-buttonCloseList.forEach(btn => {
-    const popap = btn.closest('.popap');
-    popap.addEventListener('mousedown', closeToOverlay);
-    btn.addEventListener('click', () => closePopap(popap));
-});
+// formItemElement.addEventListener('submit', handleAddCardSubmit);
+// formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
-function fillPopupEditFields() {
-    nameInput.value = profileName.textContent;
-    postInput.value = profilePost.textContent;
-};
-popapOpenEditProfile.addEventListener('click', function openPopapEdit() {
-    openPopap(popapEditElement);
+const userInfo = new UserInfo({ profileNameSelector: '.profile__name', profilePostSelector: '.profile__post' })
+
+// Попап с формой редактирования профиля
+function handleProfileFormSubmit(event, values) {
+    event.preventDefault();
+    console.log('values =>', values)
+    userInfo.setUserInfo(values.name, values.post);
+    editProfileForm.close();
+}
+popapOpenEditProfile.addEventListener('click', () => {
+    editProfileForm.open();
     profileEditFormValidation.resetValidation();
     fillPopupEditFields();
 });
-popapItemOpenElement.addEventListener('click', function openPopapAddCard() {
-    openPopap(popapItemElement);
+function fillPopupEditFields() {
+    const { name, post } = userInfo.getUserInfo()
+    nameInput.value = name;
+    postInput.value = post;
+};
+
+const addCardItemForm = new PopupWithForm('.popap_add-card', handleAddCardSubmit)
+addCardItemForm.setEventListeners();
+const editProfileForm = new PopupWithForm('.popap_edit-profile', handleProfileFormSubmit)
+editProfileForm.setEventListeners();
+
+popapAddCardElement.addEventListener('click', () => {
+    addCardItemForm.open()
     cardElementFormValidation.resetValidation();
+    // popapAddCard.openPopup();
+    // openPopap(popapItemElement);
 });
 
-function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profilePost.textContent = postInput.value;
-    closePopap(popapEditElement);
-}
-formEditProfile.addEventListener('submit', handleProfileFormSubmit);
-
-const handleopenCardPopap = (link, name) => {
-    popapImage.src = link;
-    popapImage.alt = name;
-    popapCaption.textContent = name;
-    openPopap(popapOpenCardElement);
-};
-
-function handleFormElementSubmit(event) {
-    event.preventDefault();
-
-    closePopap(popapItemElement);
-    renderCard({ name: elementName.value, link: elementUrl.value });
-    event.target.reset();
-};
-formItemElement.addEventListener('submit', handleFormElementSubmit);
 
 const renderCard = (item) => {
     const cardElement = new Card(item, '#element-template', handleopenCardPopap)
     const card = cardElement.generateCard();
-    elementList.prepend(card);
+    return card
+    // elementList.prepend(card);
 };
 
-initialCards.forEach((item) => {
-    renderCard(item);
-});
+const cardSection = new Section({
+    items: initialCards,
+    renderer: (item) => {
+        cardSection.addItem(renderCard(item));
+    }
+}, '.element')
+cardSection.renderer();
+
+
+// initialCards.forEach((item) => {
+//     renderCard(item);
+// });
+
+// function openPopap(argument) {
+//     argument.classList.add('popap_opened');
+//     document.addEventListener('keyup', handleCloseEsc);
+//     argument.addEventListener('click', closeToOverlay);
+// };
+// function closePopap(argument) {
+//     argument.classList.remove('popap_opened');
+//     argument.removeEventListener('click', closeToOverlay);
+//     document.removeEventListener('keyup', handleCloseEsc);
+// };
+// function handleCloseEsc(event) {
+//     if (event.key === 'Escape') {
+//         const openedPopap = document.querySelector('.popap_opened');
+//         closePopap(openedPopap);
+//     }
+// };
+// const closeToOverlay = function (event) {
+//     if (event.target === event.currentTarget) {
+//         const openedPopap = event.currentTarget;
+//         closePopap(openedPopap);
+//     }
+// };
+// buttonCloseList.forEach(btn => {
+//     const popap = btn.closest('.popap');
+//     popap.addEventListener('mousedown', closeToOverlay);
+//     btn.addEventListener('click', () => closePopap(popap));
+// });
 
 // const handleDeleteCard = (event) => {
 //     event.target.closest('.element__item').remove();
