@@ -1,3 +1,5 @@
+import './index.css';
+
 const initialCards = [
     {
         name: 'Новая Зеландия',
@@ -28,24 +30,13 @@ const config = {
     inputErrorClass: 'form__span_active',
     errorClass: 'form__textarea_error'
 };
-import { FormValidator } from './FormValidator.js'
-import { Card } from './Card.js';
-import { Popup } from './Popup.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
-import { Section } from './Section.js';
+// import { FormValidator } from './FormValidator.js'
+// import { Card } from './Card.js';
+// import { PopupWithImage } from './PopupWithImage.js';
+// import { PopupWithForm } from './PopupWithForm.js';
+// import { UserInfo } from './UserInfo.js';
+// import { Section } from './Section.js';
 
-// const popapImage = document.querySelector('.popap__image');
-// const popapCaption = document.querySelector('.popap__caption');
-// const buttonCloseList = document.querySelectorAll('.popap__close');
-// const profileName = document.querySelector('.profile__name');
-// const profilePost = document.querySelector('.profile__post');
-// const cardContainerSelector = '.element';
-// const cardSelector = '#element-template'
-// const cardTemplate = document.querySelector('#element-template').content.querySelector('.element__item');
-
-// const elementList = document.querySelector('.element');
 const popapEditElement = document.querySelector('.popap_edit-profile');
 const popapOpenEditProfile = document.querySelector('.profile__edit-button');
 const formEditProfile = popapEditElement.querySelector('.form_edit');
@@ -54,11 +45,7 @@ const postInput = formEditProfile.querySelector('.form__textarea_profile_post');
 const popapItemElement = document.querySelector('.popap_add-card');
 const popapAddCardElement = document.querySelector('.profile__add-button');
 const formItemElement = popapItemElement.querySelector('.form-item');
-// const elementName = document.querySelector('.form__textarea_element_name');
-// const elementUrl = document.querySelector('.form__textarea_element_url');
-// const popapOpenCardElement = document.querySelector('.popap_open-card');
-
-
+// Валидация
 const profileEditFormValidation = new FormValidator(config, formEditProfile);
 const cardElementFormValidation = new FormValidator(config, formItemElement);
 profileEditFormValidation.enableValidation();
@@ -72,26 +59,23 @@ const handleopenCardPopap = (name, link) => {
 };
 //  попап добавления карточки
 const handleAddCardSubmit = (event, values) => {
-    console.log('values =>', values)
     event.preventDefault();
-    const newCard = renderCard(values)
-    cardSection.addItem(newCard);
-    // renderCard({
-    //     name: elementName.value,
-    //     link: elementUrl.value
-    // });
+    cardSection.addItem(renderCard(values));
     addCardItemForm.close()
 };
-
-// formItemElement.addEventListener('submit', handleAddCardSubmit);
-// formEditProfile.addEventListener('submit', handleProfileFormSubmit);
-
-const userInfo = new UserInfo({ profileNameSelector: '.profile__name', profilePostSelector: '.profile__post' })
+const addCardItemForm = new PopupWithForm('.popap_add-card', handleAddCardSubmit)
+addCardItemForm.setEventListeners();
+popapAddCardElement.addEventListener('click', () => {
+    addCardItemForm.open()
+    cardElementFormValidation.resetValidation();
+});
 
 // Попап с формой редактирования профиля
+const editProfileForm = new PopupWithForm('.popap_edit-profile', handleProfileFormSubmit)
+editProfileForm.setEventListeners();
+const userInfo = new UserInfo({ profileNameSelector: '.profile__name', profilePostSelector: '.profile__post' })
 function handleProfileFormSubmit(event, values) {
     event.preventDefault();
-    console.log('values =>', values)
     userInfo.setUserInfo(values.name, values.post);
     editProfileForm.close();
 }
@@ -106,26 +90,12 @@ function fillPopupEditFields() {
     postInput.value = post;
 };
 
-const addCardItemForm = new PopupWithForm('.popap_add-card', handleAddCardSubmit)
-addCardItemForm.setEventListeners();
-const editProfileForm = new PopupWithForm('.popap_edit-profile', handleProfileFormSubmit)
-editProfileForm.setEventListeners();
-
-popapAddCardElement.addEventListener('click', () => {
-    addCardItemForm.open()
-    cardElementFormValidation.resetValidation();
-    // popapAddCard.openPopup();
-    // openPopap(popapItemElement);
-});
-
-
+//Создать карточку
 const renderCard = (item) => {
     const cardElement = new Card(item, '#element-template', handleopenCardPopap)
     const card = cardElement.generateCard();
     return card
-    // elementList.prepend(card);
 };
-
 const cardSection = new Section({
     items: initialCards,
     renderer: (item) => {
@@ -135,6 +105,10 @@ const cardSection = new Section({
 cardSection.renderer();
 
 
+
+
+// formItemElement.addEventListener('submit', handleAddCardSubmit);
+// formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 // initialCards.forEach((item) => {
 //     renderCard(item);
 // });
