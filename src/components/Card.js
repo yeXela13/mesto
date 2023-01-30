@@ -47,27 +47,4 @@ export class Card {
         this._setEventListeners();
         return this._element;
     }
-
-
- 
-
 }
-
-
-
-// new Card({name: '123', link: '123'}, '#element-template')       
-
-// const cardTemplate = document.querySelector(this._templateSelector).content.querySelector('.element__item');
-        // const newCard = cardTemplate.cloneNode(true);
-
-        // const name = newCard.querySelector('.element__text');
-        // const link = newCard.querySelector('.element__image')
-        // name.textContent = this._data.name;
-        // link.src = this._data.link;
-        // link.alt = this._data.name;
-        // const deleteItemElement = newCard.querySelector('.element__delete-button');
-        // const likeElement = newCard.querySelector('.element__like');
-        // deleteItemElement.addEventListener('click', () => {});
-        // likeElement.addEventListener('click', () => {});
-        // link.addEventListener('click', () => {});
-        // return newCard;
