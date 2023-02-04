@@ -64,4 +64,6 @@ const cardSection = new Section({
         cardSection.addItem(renderCard(item));
     }
 }, '.element')
+
 cardSection.renderer();
+// fgfgfg
