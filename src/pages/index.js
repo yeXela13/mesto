@@ -66,4 +66,4 @@ const cardSection = new Section({
 }, '.element')
 
 cardSection.renderer();
-// fgfgfgsdfffsfsfsfsf4233434fddfdfdf
+// fgfgfgsdfffsfsfsfsf4233434fddfdfdf1212
