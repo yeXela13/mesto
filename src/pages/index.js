@@ -7,16 +7,6 @@ import { UserInfo } from '../components/UserInfo.js';
 import { Section } from '../components/Section.js';
 import { Api } from '../components/Api.js';
 import { initialCards, config, popapEditElement, popapOpenEditProfile, formEditProfile, nameInput, postInput, popapItemElement, popapAddCardElement, formItemElement } from '../utils/constants.js'
-
-fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards', {
-  headers: {
-    authorization: 'fb15d3cd-51f7-4c56-adbf-e4fa5201b028'
-  }
-})
-  .then(res => res.json())
-  .then((result) => {
-    console.log(result);
-  });
   
 // Валидация
 const profileEditFormValidation = new FormValidator(config, formEditProfile);
