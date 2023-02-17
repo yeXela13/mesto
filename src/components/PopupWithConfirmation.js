@@ -15,13 +15,13 @@ export class PopupWithConfirmation extends Popup {
       super.setEventListeners();
     }
 
-    handleFormSubmit(func) {
+    setSubmitHandler(func) {
       this._handleFormSubmit = func;
     };
 
-    saving(save) {
-      if (save) {
-        this._button.textContent = 'Сохранение...'
+    deleting(deleted) {
+      if (deleted) {
+        this._button.textContent = 'Удаление...'
       } else {
         this._button.textContent = 'Да'
       }

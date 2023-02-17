@@ -6,7 +6,7 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Section } from '../components/Section.js';
 import { api } from '../components/Api.js';
-import { initialCards, config, profileSelectors,  popapOpenEditProfile, formEditProfile, nameInput, postInput, popapAddCardElement, formItemElement, popapOpenEditAvatar } from '../utils/constants.js'
+import { initialCards, config, profileSelectors,  popapOpenEditProfile, formEditProfile, formEditAvatar, nameInput, postInput, popapAddCardElement, formItemElement, popapOpenEditAvatar } from '../utils/constants.js'
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 
 let userId;
@@ -24,28 +24,28 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 const userInfo = new UserInfo(profileSelectors);
 
 popapOpenEditProfile.addEventListener('click', () => {
-    editProfileForm.open();
+  popupEditProfile.open();
     profileEditFormValidation.resetValidation();
 });
-const editProfileForm = new PopupWithForm({ handleFormSubmit: (userData) => {
-    editProfileForm.saving(true);
+const popupEditProfile = new PopupWithForm({ handleFormSubmit: (userData) => {
+  popupEditProfile.saving(true);
     api.updateUserInfo(userData)
       .then((userData) => {
         userInfo.setUserInfo(userData);
-        editProfileForm.close();
+        popupEditProfile.close();
       })
       .catch((res) => {
         console.log(res);
       })
       .finally(() => {
-        editProfileForm.saving(false);
+        popupEditProfile.saving(false);
       })
   }
 },'.popap_edit-profile');
-editProfileForm.setEventListeners();
+popupEditProfile.setEventListeners();
 
 popapOpenEditProfile.addEventListener('click', () => {
-  editProfileForm.open();
+  popupEditProfile.open();
   fillPopupEditFields();
 });
 
@@ -55,28 +55,28 @@ const fillPopupEditFields = () => {
     postInput.value = data.post;
 };
 //изменить аватар
-const editAvatarForm = new PopupWithForm({
+const popupEditAvatar = new PopupWithForm({
   handleFormSubmit: (userData) => {
-    editAvatarForm.saving(true);
+    popupEditAvatar.saving(true);
     api.editAvatar(userData)
       .then((userData, res) => {
         console.log(res)
         userInfo.setUserInfo(userData);
-        editAvatarForm.close();
+        popupEditAvatar.close();
       })
       .catch((res) => {
         console.log(res);
       })
       .finally(() => {
-        editAvatarForm.saving(false);
+        popupEditAvatar.saving(false);
       })
   }
 },'.popap_avatar');
-editAvatarForm.setEventListeners();
+popupEditAvatar.setEventListeners();
 
 popapOpenEditAvatar.addEventListener('click', () => {
-// 
-  editAvatarForm.open();
+popupEditAvatar.open();
+profileAvatarFormValidation.resetValidation();
 });
 
 //Попап с изображением
@@ -90,28 +90,28 @@ const handleOpenCardPopap = (name, link) => {
 //попап добавления карточки
 popapAddCardElement.addEventListener('click', () => {
   cardElementFormValidation.resetValidation();
-  handleAddCardSubmit.open();
+  addCardPopup.open();
 });
 
-const handleAddCardSubmit = new PopupWithForm({
+const addCardPopup = new PopupWithForm({
   handleFormSubmit: (userData) => {
-    handleAddCardSubmit.saving(true);
+    addCardPopup.saving(true);
     api.addedCard(userData)
       .then((userData) => {
         const newCard = createElement(userData);
         cardSection.addItem(newCard);
-        handleAddCardSubmit.close();
+        addCardPopup.close();
       })
       .catch((res) => {
         console.log(res);
       })
       .finally(() => {
-        handleAddCardSubmit.saving(false);
+        addCardPopup.saving(false);
       });
   }
 }, '.popap_add-card');
 
-handleAddCardSubmit.setEventListeners();
+addCardPopup.setEventListeners();
 
 // удалить карточку
 const popapDeleteCard = new PopupWithConfirmation('.popap_delete-card')
@@ -122,7 +122,7 @@ const createElement = (data) => {
   const handleDeleteClick = (id) => {
     popapDeleteCard.open();
     popapDeleteCard.handleFormSubmit(() => {
-      popapDeleteCard.saving(true);
+      popapDeleteCard.deleting(true);
       return api.deleteCard(id)
         .then(() => {
           cardElement.deleteCard();
@@ -132,7 +132,7 @@ const createElement = (data) => {
           console.log(res);
         })
         .finally(() => {
-          popapDeleteCard.saving(false);
+          popapDeleteCard.deleting(false);
         })
     })
   };
@@ -168,8 +168,9 @@ const cardSection = new Section({
 
 // // Валидация
 const profileEditFormValidation = new FormValidator(config, formEditProfile);
+const profileAvatarFormValidation = new FormValidator(config, formEditAvatar);
 const cardElementFormValidation = new FormValidator(config, formItemElement);
-
+profileAvatarFormValidation.enableValidation();
 profileEditFormValidation.enableValidation();
 cardElementFormValidation.enableValidation();
 
