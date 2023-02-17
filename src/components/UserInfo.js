@@ -1,15 +1,22 @@
 export class UserInfo {
-    constructor({ profileNameSelector, profilePostSelector }) {
-        this._name = document.querySelector(profileNameSelector)
-        this._post = document.querySelector(profilePostSelector)
+    constructor({ nameSelector, postSelector, avatarSelector }) {
+        this._name = document.querySelector(nameSelector)
+        this._post = document.querySelector(postSelector)
+        this._avatar = document.querySelector(avatarSelector)
     }
     getUserInfo() {
-        return { name: this._name.textContent, post: this._post.textContent }
+        const userData = {
+            name: this._name.textContent, 
+            post: this._post.textContent,
+            avatar: this._avatar.src
+        }
+        return userData
     }
 
-    setUserInfo(name, post) {
-        this._name.textContent = name
-        this._post.textContent = post
+    setUserInfo(data) {
+        this._name.textContent = data.name
+        this._post.textContent = data.post
+        this._avatar.src = data.avatar;
     }
 
 }

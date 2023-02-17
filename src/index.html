@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./pages/index.css">
-    <script defer src="./scripts/index.js" type="module"></script> -->
     <title>Mesto</title>
 </head>
 
@@ -15,13 +13,15 @@
     </header>
     <main class="main">
         <section class="profile">
-            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Ваш автар">
+            <button class="profile__edit-avatar">
+                <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Ваш автар">
+            </button>
             <div class="profile__info">
                 <div class="profile__container">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <h1 class="profile__name"></h1>
                     <button class="profile__edit-button" type="button"></button>
                 </div>
-                <p class="profile__post">Исследователь океана</p>
+                <p class="profile__post"></p>
             </div>
             <button class="profile__add-button" type="button"></button>
         </section>
@@ -75,13 +75,39 @@
         </div>
     </section>
 
-    <template id="element-template">
+    <section class="popap popap_delete-card">
+        <div class="popap__delete-container">
+            <form class="form form_delete" name="popap-delete-form" novalidate>
+                <button class="popap__close" type="button"></button>
+                <h2 class="form__title">Вы уверены?</h2>
+                <button aria-label="submit" class="form__button" type="submit">Да</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="popap popap_avatar">
+        <div class="popap__avatar-container">
+            <button class="popap__close" type="button"></button>
+            <h2 class="form__title">Обновить аватар</h2>
+            <form class="form form_avatar" name="popap-avatar-form" novalidate>
+                <input id="input-avatar" name="avatar" class="form__textarea form__textarea_popap_avatar" type="url"
+                    placeholder="Ссылка на Ваш аватар" minlength="2" required>
+                <span id="input-avatar-error" class="form__span form__span_active"></span>
+                <button aria-label="submit" class="form__button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
+    <template id="element-template" class="element-template">
         <li class="element__item">
             <image class="element__image" src="#" alt="#"></image>
             <button class="element__delete-button" type="button"></button>
             <div class="element__caption">
                 <h2 class="element__text"></h2>
-                <button class="element__like" type="button"></button>
+                <div class="element__like-container">
+                    <button class="element__like" type="button"></button>
+                    <p class="element__like-sum">0</p>
+                </div>
             </div>
         </li>
     </template>
