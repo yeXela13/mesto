@@ -15,7 +15,7 @@ export class UserInfo {
 
     setUserInfo(data) {
         this._name.textContent = data.name
-        this._post.textContent = data.post
+        this._post.textContent = data.about
         this._avatar.src = data.avatar;
     }
 

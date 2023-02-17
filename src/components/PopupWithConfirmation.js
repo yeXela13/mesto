@@ -4,12 +4,12 @@ export class PopupWithConfirmation extends Popup {
     constructor(popupSelector) {
       super(popupSelector);
       this._form = this._popup.querySelector('.form');
-      this._submitButton = this._popup.querySelector('.form__button');
+      this._button = this._popup.querySelector('.form__button');
     }
 
     setEventListeners() {
-      this._form.addEventListener('submit', (evt) => {
-        evt.preventDefault();
+      this._form.addEventListener('submit', (event) => {
+        event.preventDefault();
         this._handleFormSubmit();
       });
       super.setEventListeners();
@@ -19,11 +19,11 @@ export class PopupWithConfirmation extends Popup {
       this._handleFormSubmit = func;
     };
 
-    load(loading) {
-      if (loading) {
-        this._submitButton.textContent = 'Сохранение...'
+    saving(save) {
+      if (save) {
+        this._button.textContent = 'Сохранение...'
       } else {
-        this._submitButton.textContent = 'Да'
+        this._button.textContent = 'Да'
       }
     };
 }

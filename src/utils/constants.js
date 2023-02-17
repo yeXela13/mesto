@@ -29,13 +29,17 @@ export const config = {
     inputErrorClass: 'form__span_active',
     errorClass: 'form__textarea_error'
 };
+export const profileSelectors = {
+    nameSelector: '.profile__name',
+    postSelector: '.profile__post',
+    avatarSelector: '.profile__avatar'
+};
 
 export const popapEditElement = document.querySelector('.popap_edit-profile');
 export const popapItemElement = document.querySelector('.popap_add-card');
 export const popapOpenEditProfile = document.querySelector('.profile__edit-button');
 export const popapOpenEditAvatar = document.querySelector('.profile__edit-avatar');
 export const popapAddCardElement = document.querySelector('.profile__add-button');
-export const popapDeleteCardElement = document.querySelector('.element__delete-button');
 export const element = document.querySelector('.element');
 export const cardTemplate = document.querySelector('.element-template');
 export const formEditProfile = document.forms['popap-form'];

@@ -43,7 +43,7 @@ export class Card {
         });
 
         this._likeButton.addEventListener('click', () => {
-            this._handleLikeCard()
+            // this._handleLikeCard()
             if (!this._likeButton.classList.contains('element__like-active')) {
                 this._handleLikeCard(this._id);
             } else {
@@ -59,19 +59,17 @@ export class Card {
         this._element.querySelector('.element__text').textContent = this._name;
         this._deleteButton = this._element.querySelector('.element__delete-button');
         this._likeButton = this._element.querySelector('.element__like');
-        this._likeSum =  this._element.querySelector('.element__like-sum');
-        this._likeSum.textContent =  this._likes.length;
+        this._likeSum = this._element.querySelector('.element__like-sum');
+        this._likeSum.textContent = this._likes.length;
         if (this._likes.some((user) => {
             return this._userId === user._id;
         })) {
             this._likeButton.classList.add('element__like-active');
         }
-
         if (this._userId !== this._ownerId) {
             this._deleteButton.style.display = 'none';
         }
         this._setEventListeners();
         return this._element;
     }
-
 }
