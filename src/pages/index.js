@@ -86,7 +86,6 @@ const handleOpenCardPopap = (name, link) => {
   popupWithImage.open(name, link);
 };
 
-
 //попап добавления карточки
 popapAddCardElement.addEventListener('click', () => {
   cardElementFormValidation.resetValidation();
@@ -121,7 +120,7 @@ popapDeleteCard.setEventListeners();
 const createElement = (data) => {
   const handleDeleteClick = (id) => {
     popapDeleteCard.open();
-    popapDeleteCard.handleFormSubmit(() => {
+    popapDeleteCard.setSubmitHandler(() => {
       popapDeleteCard.deleting(true);
       return api.deleteCard(id)
         .then(() => {
